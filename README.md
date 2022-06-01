@@ -8,6 +8,16 @@
 </div>
 
 
+<!-- ============== SHIELDS ============== -->
+<div align="center">
+
+  ![GitHub repo size][GitHub repo size-shields]
+  ![GitHub language count][GitHub language count-shields]
+  ![GitHub forks][GitHub forks-shields]
+  [![GitHub License][GitHub License-shields]][GitHub License-link]
+  [![Website][Website-shields]][Website-link]
+</div>
+
 <!-- ===== SUMARIO ===== -->
 <details>
   <summary>Table of Contents</summary>
@@ -17,17 +27,6 @@
     <li><a href="#autores">Autores</a></li>
   </ol>
 </details>
-
-<!-- ============== SHIELDS ============== -->
-<div align="center">
-
-  ![GitHub repo size][GitHub repo size-shields]
-  ![GitHub language count][GitHub language count-shields]
-  ![GitHub forks][GitHub forks-shields]
-  <!-- [![GitHub License][GitHub License-shields]][GitHub License-link] -->
-  [![Website][Website-shields]][Website-link]
-
-</div>
 
 <!-- ============== ABOUT ============== -->
 ## Sobre o Projeto
@@ -57,6 +56,11 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 <br>
 <p align="right">(<a href="#header">back to top</a>)</p>
+
+
+<!-- ============== LINKs ============== -->
+<!-- Alterar link -->
+[GitHub License-link]: https://github.com/RuanMiniguite/SCC-backend-spring/blob/f479c14bff9463231113113601afab8222f51a76/LICENSE
 
 <!-- Alterar caminho para repositorio [Template-Readme] -->
 [GitHub repo size-shields]: https://img.shields.io/github/repo-size/RuanMiniguite/SCC-frontend-react?style=for-the-badge

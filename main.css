@@ -34,20 +34,20 @@ body{
 
 header{
   grid-area: h;
-  background-color: #EE2B47;
+  background-color: var(--cor-action);
   display: flex;
   align-items: center;
 }
 
 aside{
   grid-area: a;
-  background-color: #2C2E3E;
+  background-color: var(--cor-secundary);
   height: 100%;
 }
 
 section{
   grid-area: s;
-  background-color: #F6F6F6;
+  background-color: var(--cor-primary);
   padding-bottom: 2rem;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -55,7 +55,7 @@ section{
 
 footer{
   grid-area: f;
-  background-color: #34374C;
+  background-color: var(--cor-button);
   color: var(--cor-primary);
   text-align: center;
   

@@ -1,6 +1,8 @@
 import { Sidebar } from "../../../components/Sidebar";
 import { Header } from "../../../components/Header";
 
+import { useNavigate } from 'react-router-dom';
+
 const motos = [
 
   {
@@ -171,12 +173,23 @@ const motos = [
 ];
 
 export function Moto() {
+
+  const navigate = useNavigate();
+
+  const navigateToCreateMotos = () => {
+    // 👇️ navigate to /contacts
+    navigate('/moto/createMoto');
+  };
+
   return (
     <>
       <Header />
       <Sidebar />
       <div className="absolute left-[200px] p-4">
         <h1>Página de Motos</h1>
+        <div className="flex flex-row mt-5">
+          <button className="p-1 bg-green-600 rounded-xl text-white" onClick={navigateToCreateMotos}>Cadastrar</button>
+        </div>
 
         <div className="flex flex-col mt-5">
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

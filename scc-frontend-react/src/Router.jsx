@@ -14,6 +14,7 @@ import { R_Comissao } from './pages/Relatorios/R_Comissao'
 import { R_MotosVendidas } from './pages/Relatorios/R_MotosVendidas'
 import { R_Produtos } from './pages/Relatorios/R_Produtos'
 import { R_Revisao } from './pages/Relatorios/R_Revisao'
+import { CreateMoto } from "./pages/CRUD/Moto/CreateMoto";
 
 export function Router() {
     return (
@@ -24,7 +25,10 @@ export function Router() {
             <Route path="/cliente" element={<Cliente />} />
             <Route path="/comissao" element={<Comissao />} />
             <Route path="/funcionario" element={<Funcionario />} />
+
             <Route path="/moto" element={<Moto />} />
+            <Route path="/moto/createMoto" element={<CreateMoto />} />
+
             <Route path="/venda" element={<Venda />} />
             <Route path="/recall" element={<Recall />} />
             <Route path="/comissaoFuncionario" element={<ComissaoFuncionario />} />
@@ -32,7 +36,7 @@ export function Router() {
             <Route path="/r_MotosVendidas" element={<R_MotosVendidas />} />
             <Route path="/r_Comissao" element={<R_Comissao />} />
             <Route path="/r_Produtos" element={<R_Produtos />} />
-            <Route path="/r_Revisao" element={<R_Revisao />} />              
+            <Route path="/r_Revisao" element={<R_Revisao />} />
         </Routes>
     );
 }

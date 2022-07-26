@@ -1,19 +1,19 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import React from 'react';
 import { Home } from './pages/Home'
-import { Cliente } from './pages/Cliente'
-import { Comissao } from './pages/Comissao'
-import { Funcionario } from './pages/Funcionario'
+import { Cliente } from './pages/CRUD/Cliente'
+import { Comissao } from './pages/CRUD/Comissao'
+import { Funcionario } from './pages/CRUD/Funcionario'
 import { Login } from './pages/Login'
-import { Moto } from './pages/Moto'
-import { Venda } from './pages/Venda'
-import { Recall } from './pages/Recall'
-import { ComissaoFuncionario } from './pages/ComissaoFuncionario'
-import { Revisao } from './pages/Revisao'
-import { R_Comissao } from './pages/R_Comissao'
-import { R_MotosVendidas } from './pages/R_MotosVendidas'
-import { R_Produtos } from './pages/R_Produtos'
-import { R_Revisao } from './pages/R_Revisao'
+import { Moto } from './pages/CRUD/Moto'
+import { Venda } from './pages/Processos/Venda'
+import { Recall } from './pages/Processos/Recall'
+import { ComissaoFuncionario } from './pages/Processos/ComissaoFuncionario'
+import { Revisao } from './pages/Processos/Revisao'
+import { R_Comissao } from './pages/Relatorios/R_Comissao'
+import { R_MotosVendidas } from './pages/Relatorios/R_MotosVendidas'
+import { R_Produtos } from './pages/Relatorios/R_Produtos'
+import { R_Revisao } from './pages/Relatorios/R_Revisao'
 
 export function Router() {
     return (

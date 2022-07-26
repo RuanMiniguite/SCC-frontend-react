@@ -7,32 +7,16 @@ import { Funcionario } from './pages/Funcionario'
 import { Login } from './pages/Login'
 import { Moto } from './pages/Moto'
 
-export function Router(user) {
+export function Router() {
     return (
-        <>
-            <Routes>
-                <Route path="/"
-                    element={
-                        <ProtectedRoute user={user}>
-                            <Home />
-                        </ProtectedRoute>
-                    }
-                />
 
-                <Route path="/cliente" element={<Cliente />} />
-                <Route path="/comissao" element={<Comissao />} />
-                <Route path="/funcionario" element={<Funcionario />} />
-                <Route path="/moto" element={<Moto />} />
-            </Routes>
-        </>
-
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/cliente" element={<Cliente />} />
+            <Route path="/comissao" element={<Comissao />} />
+            <Route path="/funcionario" element={<Funcionario />} />
+            <Route path="/moto" element={<Moto />} />
+        </Routes>
     );
 }
-
-const ProtectedRoute = ({ user, children }) => {
-    if (!user) {
-        return <Navigate to={<Login />} replace />;
-    }
-
-    return children;
-};

@@ -1,11 +1,11 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import React from 'react';
 import { Home } from './pages/Home'
-import { Cliente } from './pages/CRUD/Cliente'
-import { Comissao } from './pages/CRUD/Comissao'
-import { Funcionario } from './pages/CRUD/Funcionario'
+import { Cliente } from './pages/CRUD/Cliente/Cliente'
+import { Comissao } from './pages/CRUD/Comissao/Comissao'
+import { Funcionario } from './pages/CRUD/Funcionario/Funcionario'
 import { Login } from './pages/Login'
-import { Moto } from './pages/CRUD/Moto'
+import { Moto } from './pages/CRUD/Moto/Moto'
 import { Venda } from './pages/Processos/Venda'
 import { Recall } from './pages/Processos/Recall'
 import { ComissaoFuncionario } from './pages/Processos/ComissaoFuncionario'

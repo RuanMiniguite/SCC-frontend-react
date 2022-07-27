@@ -73,7 +73,7 @@ export function Funcionario() {
         <div className="flex flex-row">
           <Sidebar />
           <div className="flex flex-col items-center min-w-0 pt-5 w-screen">
-            <h1 className="uppercase scale-125">Página de Funcionario</h1>
+            <h1 className="uppercase scale-125">Funcionarios</h1>
             <div className="flex flex-row mt-5">
               <button className="p-1 bg-red-600 hover:bg-red-400 rounded-md text-white" onClick={navigateToCreateFuncionario}>Cadastrar</button>
             </div>

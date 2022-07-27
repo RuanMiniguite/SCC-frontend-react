@@ -7,7 +7,6 @@ import { Funcionario } from './pages/CRUD/Funcionario/Funcionario'
 import { CreateFuncionario } from "./pages/CRUD/Funcionario/CreateFuncionario";
 import { Login } from './pages/Login'
 import { Moto } from './pages/CRUD/Moto/Moto'
-import { Venda } from './pages/Processos/Venda'
 import { Recall } from './pages/Processos/Recall'
 import { ComissaoFuncionario } from './pages/Processos/ComissaoFuncionario'
 import { Revisao } from './pages/Processos/Revisao/Revisao'
@@ -21,7 +20,10 @@ import { DeleteMoto } from "./pages/CRUD/Moto/DeleteMoto";
 import { UpdateFuncionario } from "./pages/CRUD/Funcionario/UpdateFuncionario";
 import { DeleteFuncionario } from "./pages/CRUD/Funcionario/DeleteFuncionario";
 import { CreateRevisao } from "./pages/Processos/Revisao/CreateRevisao";
-
+import { Venda } from './pages/Processos/Venda/Venda';
+import { CreateVenda } from "./pages/Processos/Venda/CreateVenda";
+import { UpdateVenda } from './pages/Processos/Venda/UpdateVenda';
+import { DeleteVenda } from './pages/Processos/Venda/DeleteVenda';
 
 function ProfilePage() {
     // Get the userId param from the URL.
@@ -50,12 +52,15 @@ export function Router() {
             <Route path="/moto/deleteMoto/:codMoto" element={<DeleteMoto />} />
 
             <Route path="/venda" element={<Venda />} />
+            <Route path="/venda/createVenda" element={<CreateVenda />} />
+            <Route path="/venda/updateVenda/:codVenda" element={<UpdateVenda />} />
+            <Route path="/venda/deleteVenda/:codVenda" element={<DeleteVenda />} />
+
             <Route path="/recall" element={<Recall />} />
             <Route path="/comissaoFuncionario" element={<ComissaoFuncionario />} />
 
             <Route path="/revisao" element={<Revisao />} />
             <Route path="/revisao/createRevisao" element={<CreateRevisao />} />
-
 
             <Route path="/r_MotosVendidas" element={<R_MotosVendidas />} />
             <Route path="/r_Comissao" element={<R_Comissao />} />

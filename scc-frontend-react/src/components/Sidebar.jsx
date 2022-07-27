@@ -6,81 +6,81 @@ export function Sidebar() {
             <div className="text-white">
                 <nav>
                     <ul>
-                        <li className="py-4 px-5 hover:bg-red-600">
-                            <Link to={'/funcionario'}>
+                        <Link to={'/funcionario'}>
+                            <li className="py-4 px-5 hover:bg-red-600">
                                 <i></i>
                                 Funcionário
-                            </Link>
-                        </li>
-                        <li className="py-4 px-5 hover:bg-red-600">
-                            <Link to={'/cliente'}>
+                            </li>
+                        </Link>
+                        <Link to={'/cliente'}>
+                            <li className="py-4 px-5 hover:bg-red-600">
                                 <i></i>
                                 Cliente
-                            </Link>
-                        </li>
-                        <li className="py-4 px-5 hover:bg-red-600">
-                            <Link to={'/comissao'}>
+                            </li>
+                        </Link>                      
+                        <Link to={'/comissao'}>
+                            <li className="py-4 px-5 hover:bg-red-600">
                                 <i></i>
                                 Comissão
-                            </Link>
-                        </li>
-                        <li className="py-4 px-5 hover:bg-red-600">
-                            <Link to={'/moto'}>
+                            </li>
+                        </Link>
+                        <Link to={'/moto'}>
+                            <li className="py-4 px-5 hover:bg-red-600">
                                 <i></i>
                                 Moto
-                            </Link>
-                        </li>
+                            </li>
+                        </Link>
                         <hr />
-                        <li className="py-4 px-5 hover:bg-red-600">
-                            <Link to={'/venda'}>
+                        <Link to={'/venda'}>
+                            <li className="py-4 px-5 hover:bg-red-600">
                                 <i></i>
                                 Venda
-                            </Link>
-                        </li>
-                        <li className="py-4 px-5 hover:bg-red-600">
-                            <Link to={'/comissaoFuncionario'}>
+                            </li>
+                        </Link>
+                        <Link to={'/comissaoFuncionario'}>
+                            <li className="py-4 px-5 hover:bg-red-600">
                                 <i></i>
                                 Comissão Funcionário
-                            </Link>
-                        </li>
-                        <li className="py-4 px-5 hover:bg-red-600">
-                            <Link to={'/recall'}>
+                            </li>
+                        </Link>
+                        <Link to={'/recall'}>
+                            <li className="py-4 px-5 hover:bg-red-600">
                                 <i></i>
                                 Recall
-                            </Link>
-                        </li>
-                        <li className="py-4 px-5 hover:bg-red-600">
-                            <Link to={'/revisao'}>
+                            </li>
+                        </Link>
+                    
+                        <Link to={'/revisao'}>
+                            <li className="py-4 px-5 hover:bg-red-600">
                                 <i></i>
                                 Revisão
-                            </Link>
-                        </li>
+                            </li>
+                        </Link>
                         <hr />
-
-                        <li className="py-4 px-5 hover:bg-red-600">
-                            <Link to={'/r_Revisao'}>
+                        <Link to={'/r_Revisao'}>
+                            <li className="py-4 px-5 hover:bg-red-600">
                                 <i></i>
                                 Relatório de Revisao
-                            </Link>
-                        </li>
-                        <li className="py-4 px-5 hover:bg-red-600">
-                            <Link to={'/r_Produtos'}>
-                                <i></i>
-                                Relatório de Produto
-                            </Link>
-                        </li>
-                        <li className="py-4 px-5 hover:bg-red-600">
-                            <Link to={'/r_MotosVendidas'}>
-                                <i></i>
-                                Relatório de Motos Vendidas
-                            </Link>
-                        </li>
-                        <li className="py-4 px-5 hover:bg-red-600">
-                            <Link to={'/r_Comissao'}>
-                                <i></i>
-                                Relatório de Comissao
-                            </Link>
-                        </li>
+                            </li>
+                        </Link>
+                        <Link to={'/r_Produtos'}>
+                            <li className="py-4 px-5 hover:bg-red-600">
+                            <i></i>
+                            Relatório de Produto
+                            </li>
+                        </Link>
+                        <Link to={'/r_MotosVendidas'}>
+                            <li className="py-4 px-5 hover:bg-red-600">
+                            <i></i>
+                            Relatório de Motos Vendidas
+                            </li>
+                        </Link>
+                        <Link to={'/r_Comissao'}>
+                            <li className="py-4 px-5 hover:bg-red-600">
+                            <i></i>
+                            Relatório de Comissao
+                            </li>
+                        </Link>
                     </ul>
                 </nav>
             </div>

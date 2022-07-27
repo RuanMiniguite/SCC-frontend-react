@@ -188,7 +188,7 @@ export function Moto() {
         <Header />
         <div className="flex flex-row">
           <Sidebar />
-          <div className="flex flex-col items-center min-w-0 pt-10 w-screen">
+          <div className="flex flex-col items-center min-w-0 w-screen">
             <Title title="Página de Motos" />
             <div className="flex flex-row mt-10">
               <button className="p-1 bg-red-600 hover:bg-red-400 rounded-md text-white" onClick={navigateToCreateMotos}>Cadastrar</button>

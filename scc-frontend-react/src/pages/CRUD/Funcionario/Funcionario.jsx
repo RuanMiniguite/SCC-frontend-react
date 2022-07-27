@@ -78,7 +78,7 @@ export function Funcionario() {
             <div className="flex flex-row mt-10">
               <button className="p-1 bg-red-600 hover:bg-red-400 rounded-md text-white" onClick={navigateToCreateFuncionario}>Cadastrar</button>
             </div>
-            <div className="w-[100%] mt-7">
+            <div className="w-[100%] mt-7 flex flex-row justify-center">
               <div className="shadow overflow-x-scroll border-b border-gray-200 sm:rounded-lg">
                 <table className="divide-gray-200 divide-y-2 m-2 border border-gray-200">
                   <thead className="bg-gray-50">
@@ -147,7 +147,7 @@ export function Funcionario() {
                         scope="col"
                         className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        Admin
+                        Permição
                       </th>
                       <th
                         scope="col"
@@ -194,7 +194,7 @@ export function Funcionario() {
                           {funcionario.salario}
                         </td>
                         <td className="px-3 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                          {funcionario.admin}
+                          {funcionario.admin? 'Admin' : 'Usuário'}
                         </td>
                         <td className="px-3 py-4 whitespace-nowrap text-sm text-center text-gray-500">
                           {funcionario.dataAdmissao}

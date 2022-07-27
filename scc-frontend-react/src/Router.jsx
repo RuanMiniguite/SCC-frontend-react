@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import React from 'react';
 import { Home } from './pages/Home'
 import { Cliente } from './pages/CRUD/Cliente/Cliente'
@@ -16,6 +16,16 @@ import { R_Produtos } from './pages/Relatorios/R_Produtos'
 import { R_Revisao } from './pages/Relatorios/R_Revisao'
 import { CreateMoto } from "./pages/CRUD/Moto/CreateMoto";
 import { CreateFuncionario } from "./pages/CRUD/Funcionario/CreateFuncionario";
+import { UpdateMoto } from "./pages/CRUD/Moto/UpdateMoto";
+import { DeleteMoto } from "./pages/CRUD/Moto/DeleteMoto";
+
+
+function ProfilePage() {
+    // Get the userId param from the URL.
+    let { codMoto } = useParams();
+    // ...
+}
+
 
 export function Router() {
     return (
@@ -25,12 +35,14 @@ export function Router() {
             <Route path="/login" element={<Login />} />
             <Route path="/cliente" element={<Cliente />} />
             <Route path="/comissao" element={<Comissao />} />
-            
+
             <Route path="/funcionario" element={<Funcionario />} />
             <Route path="/funcionario/createFuncionario" element={<CreateFuncionario />} />
 
             <Route path="/moto" element={<Moto />} />
             <Route path="/moto/createMoto" element={<CreateMoto />} />
+            <Route path="/moto/updateMoto/:codMoto" element={<UpdateMoto />} />
+            <Route path="/moto/deleteMoto/:codMoto" element={<DeleteMoto />} />
 
             <Route path="/venda" element={<Venda />} />
             <Route path="/recall" element={<Recall />} />

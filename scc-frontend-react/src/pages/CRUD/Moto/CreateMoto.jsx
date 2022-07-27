@@ -1,9 +1,17 @@
 import { Sidebar } from "../../../components/Sidebar";
 import { Header } from "../../../components/Header";
+import { useNavigate } from 'react-router-dom';
 import React from "react";
 
 
 export function CreateMoto() {
+
+    const navigate = useNavigate();
+
+    const navigateToMotos = () => {
+        // 👇️ navigate to /contacts
+        navigate('/moto');
+    };
 
     return (
         <div className="w-full h-full">
@@ -68,9 +76,16 @@ export function CreateMoto() {
                             <label className="text-base text-black" for="ChkPromos">Moto Vendida</label>
                             <input className="bg-transparent min-h-[20px] w-[90px] border border-gray-300 text-base px-2" type="checkbox" name="Promos" id="Chkvendida" />
                             <div className="flex flex-col items-center">
-                                <button
-                                    className="w-[100px] text-white mb-11 bg-gray-700 rounded-md p-1 mt-5 hover:bg-red-600"
-                                    type="submit">Salvar</button>
+                                <div className="flex flex-row">
+                                    <button
+                                        className="w-[100px] text-white mb-11 bg-green-700 rounded-md p-1 m-1 mt-5 hover:bg-green-600"
+                                        type="submit">Salvar
+                                    </button>
+                                    <button
+                                        className="w-[100px] text-white mb-11 bg-red-700 rounded-md p-1 m-1 mt-5 hover:bg-red-500"
+                                        type="button" onClick={navigateToMotos}>Cancelar
+                                    </button>
+                                </div>
                             </div>
                         </form>
                     </div>

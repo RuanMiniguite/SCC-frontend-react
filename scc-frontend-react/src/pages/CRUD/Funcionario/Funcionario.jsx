@@ -72,19 +72,19 @@ export function Funcionario() {
         <Header />
         <div className="flex flex-row">
           <Sidebar />
-          <div className="flex flex-col items-center min-w-0 pt-5">
+          <div className="flex flex-col items-center min-w-0 pt-5 w-screen">
             <h1 className="uppercase scale-125">Página de Funcionario</h1>
             <div className="flex flex-row mt-5">
               <button className="p-1 bg-red-600 hover:bg-red-400 rounded-md text-white" onClick={navigateToCreateFuncionario}>Cadastrar</button>
             </div>
-            <div className="w-[100%] flex mt-7 2xl:ml-20">
-              <div className="shadow  overflow-x-scroll border-b border-gray-200 sm:rounded-lg">
-                <table className="divide-y divide-gray-200">
+            <div className="w-[100%] mt-7">
+              <div className="shadow overflow-x-scroll border-b border-gray-200 sm:rounded-lg">
+                <table className="divide-gray-200 divide-y-2">
                   <thead className="bg-gray-50">
                     <tr>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 w-72 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Nome
                       </th>
@@ -162,7 +162,7 @@ export function Funcionario() {
                   <tbody className="bg-white divide-y divide-gray-200">
                     {funcionario.map(funcionario => (
                       <tr key={funcionario.codFuncionario}>
-                        <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-3 py-4 w-72 whitespace-nowrap text-sm text-gray-500">
                           {funcionario.nome}
                         </td>
                         <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">

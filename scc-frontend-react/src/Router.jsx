@@ -4,6 +4,7 @@ import { Home } from './pages/Home'
 import { Cliente } from './pages/CRUD/Cliente/Cliente'
 import { Comissao } from './pages/CRUD/Comissao/Comissao'
 import { Funcionario } from './pages/CRUD/Funcionario/Funcionario'
+import { CreateFuncionario } from "./pages/CRUD/Funcionario/CreateFuncionario";
 import { Login } from './pages/Login'
 import { Moto } from './pages/CRUD/Moto/Moto'
 import { Venda } from './pages/Processos/Venda'
@@ -15,9 +16,10 @@ import { R_MotosVendidas } from './pages/Relatorios/R_MotosVendidas'
 import { R_Produtos } from './pages/Relatorios/R_Produtos'
 import { R_Revisao } from './pages/Relatorios/R_Revisao'
 import { CreateMoto } from "./pages/CRUD/Moto/CreateMoto";
-import { CreateFuncionario } from "./pages/CRUD/Funcionario/CreateFuncionario";
 import { UpdateMoto } from "./pages/CRUD/Moto/UpdateMoto";
 import { DeleteMoto } from "./pages/CRUD/Moto/DeleteMoto";
+import { UpdateFuncionario } from "./pages/CRUD/Funcionario/UpdateFuncionario";
+import { DeleteFuncionario } from "./pages/CRUD/Funcionario/DeleteFuncionario";
 
 
 function ProfilePage() {
@@ -38,6 +40,8 @@ export function Router() {
 
             <Route path="/funcionario" element={<Funcionario />} />
             <Route path="/funcionario/createFuncionario" element={<CreateFuncionario />} />
+            <Route path="/funcionario/updateFuncionario/:codFuncionario" element={<UpdateFuncionario />} />
+            <Route path="/funcionario/deleteFuncionario/:codFuncionario" element={<DeleteFuncionario />} />
 
             <Route path="/moto" element={<Moto />} />
             <Route path="/moto/createMoto" element={<CreateMoto />} />

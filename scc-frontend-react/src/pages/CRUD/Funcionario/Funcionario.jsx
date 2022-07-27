@@ -1,7 +1,8 @@
 import { Sidebar } from "../../../components/Sidebar";
 import { Header } from "../../../components/Header";
+import { Title } from "../../../components/Title";
 
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const funcionario = [
   {
@@ -72,8 +73,8 @@ export function Funcionario() {
         <Header />
         <div className="flex flex-row">
           <Sidebar />
-          <div className="flex flex-col items-center min-w-0 pt-10 w-screen">
-            <h1 className="uppercase scale-125 text-center text-2xl tracking-widest">Funcionarios</h1>
+          <div className="flex flex-col items-center min-w-0 w-screen">
+            <Title title="Funcionarios" />
             <div className="flex flex-row mt-10">
               <button className="p-1 bg-red-600 hover:bg-red-400 rounded-md text-white" onClick={navigateToCreateFuncionario}>Cadastrar</button>
             </div>
@@ -199,14 +200,14 @@ export function Funcionario() {
                           {funcionario.dataAdmissao}
                         </td>
                         <td className="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">
-                          <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                            Edit
-                          </a>
+                          <Link to={`/funcionario/updateFuncionario/${funcionario.codFuncionario}`} className="text-indigo-600 hover:text-indigo-900">
+                            Editar
+                          </Link>
                         </td>
                         <td className="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">
-                          <a href="#" className="text-red-600 hover:text-red-900">
-                            Remove
-                          </a>
+                          <Link to={`/funcionario/deleteFuncionario/${funcionario.codFuncionario}`} className="text-red-600 hover:text-red-700">
+                            Deletar
+                          </Link>
                         </td>
                       </tr>
                     ))}

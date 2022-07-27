@@ -1,7 +1,7 @@
 import { Sidebar } from "../../../components/Sidebar";
 import { Header } from "../../../components/Header";
 
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const motos = [
 
@@ -194,83 +194,86 @@ export function Moto() {
             </div>
             <div className="w-[100%] mt-7">
               <div className="shadow overflow-x-scroll border-b border-gray-200 sm:rounded-lg">
-                <table className="divide-y divide-gray-200 m-2 border border-gray-200">
+                <table className="divide-y-2 divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center w-72 text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Modelo
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center w-72 text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Ano Fabricação
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center w-72 text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Ano Modelo
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center w-72 text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         CC
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center w-72 text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Chassi
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center w-72 text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Combustível
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center w-72 text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Placa
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center w-72 text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Valor
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center w-72 text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Cor
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center w-72 text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Marca
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center w-72 text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Tipo Moto
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center w-72 text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Cliente
                       </th>
                       <th scope="col" className="relative px-6 py-3">
                         <span className="sr-only">Edit</span>
+                      </th>
+                      <th scope="col" className="relative px-6 py-3">
+                        <span className="sr-only">Delete</span>
                       </th>
                     </tr>
                   </thead>
@@ -314,9 +317,14 @@ export function Moto() {
                           {moto.cliente ? moto.cliente.nome : ''}
                         </td>
                         <td className="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">
-                          <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                            Edit
-                          </a>
+                          <Link to={`/moto/updateMoto/${moto.codMoto}`} className="text-indigo-600 hover:text-indigo-900">
+                            Editar
+                          </Link>
+                        </td>
+                        <td className="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">
+                          <Link to={`/moto/deleteMoto/${moto.codMoto}`} className="text-red-600 hover:text-red-700">
+                            Deletar
+                          </Link>
                         </td>
                       </tr>
                     ))}

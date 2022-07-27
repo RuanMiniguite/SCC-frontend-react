@@ -178,7 +178,6 @@ export function Moto() {
   const navigate = useNavigate();
 
   const navigateToCreateMotos = () => {
-    // 👇️ navigate to /contacts
     navigate('/moto/createMoto');
   };
 

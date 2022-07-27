@@ -20,6 +20,7 @@ import { UpdateMoto } from "./pages/CRUD/Moto/UpdateMoto";
 import { DeleteMoto } from "./pages/CRUD/Moto/DeleteMoto";
 import { UpdateFuncionario } from "./pages/CRUD/Funcionario/UpdateFuncionario";
 import { DeleteFuncionario } from "./pages/CRUD/Funcionario/DeleteFuncionario";
+import { CreateRevisao } from "./pages/Processos/Revisao/CreateRevisao";
 
 
 function ProfilePage() {
@@ -51,7 +52,11 @@ export function Router() {
             <Route path="/venda" element={<Venda />} />
             <Route path="/recall" element={<Recall />} />
             <Route path="/comissaoFuncionario" element={<ComissaoFuncionario />} />
+
             <Route path="/revisao" element={<Revisao />} />
+            <Route path="/revisao/createRevisao" element={<CreateRevisao />} />
+
+
             <Route path="/r_MotosVendidas" element={<R_MotosVendidas />} />
             <Route path="/r_Comissao" element={<R_Comissao />} />
             <Route path="/r_Produtos" element={<R_Produtos />} />

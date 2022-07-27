@@ -30,33 +30,33 @@ export function CreateFuncionario() {
             <label for="txtEstado">Estado</label>
             <input className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="text" name="Estado" id="txtEstado" list="estado" placeholder="Informe Estado" required /><br />
             <datalist id="estado">
-                <option value="AC"></option>
-                <option value="AL"></option>
-                <option value="AP"></option>
-                <option value="AM"></option>
-                <option value="BA"></option>
-                <option value="CE"></option>
-                <option value="DF"></option>
-                <option value="ES"></option>
-                <option value="GO"></option>
-                <option value="MA"></option>
-                <option value="MT"></option>
-                <option value="MS"></option>
-                <option value="MG"></option>
-                <option value="PA"></option>
-                <option value="PB"></option>
-                <option value="PR"></option>
-                <option value="PE"></option>
-                <option value="PI"></option>
-                <option value="RJ"></option>
-                <option value="RN"></option>
-                <option value="RS"></option>
-                <option value="RO"></option>
-                <option value="RR"></option>
-                <option value="SC"></option>
-                <option value="SP"></option>
-                <option value="SE"></option>
-                <option value="TO"></option>
+              <option value="AC"></option>
+              <option value="AL"></option>
+              <option value="AP"></option>
+              <option value="AM"></option>
+              <option value="BA"></option>
+              <option value="CE"></option>
+              <option value="DF"></option>
+              <option value="ES"></option>
+              <option value="GO"></option>
+              <option value="MA"></option>
+              <option value="MT"></option>
+              <option value="MS"></option>
+              <option value="MG"></option>
+              <option value="PA"></option>
+              <option value="PB"></option>
+              <option value="PR"></option>
+              <option value="PE"></option>
+              <option value="PI"></option>
+              <option value="RJ"></option>
+              <option value="RN"></option>
+              <option value="RS"></option>
+              <option value="RO"></option>
+              <option value="RR"></option>
+              <option value="SC"></option>
+              <option value="SP"></option>
+              <option value="SE"></option>
+              <option value="TO"></option>
             </datalist>
 
             <label for="txtCep">Cep</label>
@@ -79,16 +79,17 @@ export function CreateFuncionario() {
             <label for="txtCargo">Cargo</label>
             <input className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="text" name="Cargo" id="txtCargo" list="cargo" placeholder="Informe Cargo" required /><br />
             <datalist id="cargo">
-                <option value="Gerente"></option>
-                <option value="Vendedor"></option>
-                <option value="Mecânico"></option>
-                <option value="Outro"></option>
+              <option value="Gerente"></option>
+              <option value="Vendedor"></option>
+              <option value="Mecânico"></option>
+              <option value="Outro"></option>
             </datalist>
 
             <label for="txtSalario">Salario</label>
             <input className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="text" id="txtSalario" name="Salario" placeholder="Digite aqui o salario" required />
-            <div className="flex flex-col items-center">
-              <button className="p-1 mt-5 bg-gray-700 hover:bg-red-600 rounded-md text-white w-[100px] mb-12" type="submit">Salvar</button>
+            <div className="flex flex-row justify-center">
+              <button className="p-1 mt-5 bg-gray-700 hover:bg-red-600 rounded-md text-white w-[100px] mb-12 mr-4" type="submit">Salvar</button>
+              <button className="p-1 mt-5 border-2 border-gray-700 hover:bg-red-600 hover:border-red-600 hover:text-white rounded-md text-black w-[100px] mb-12 ml-4" type="reset">Cancelar</button>
             </div>
             </form>
           </div>

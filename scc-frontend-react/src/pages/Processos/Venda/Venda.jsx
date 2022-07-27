@@ -308,7 +308,13 @@ export function Venda() {
                         scope="col"
                         className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        Telefone
+                        Desconto
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        Pagamento
                       </th>
                       <th
                         scope="col"
@@ -345,8 +351,11 @@ export function Venda() {
                         <td className="px-3 py-4  w-[50%] whitespace-nowrap text-sm text-gray-500">
                           {vendas.data}
                         </td>
-                        <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {vendas.valor}
+                        <td className="px-3 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                          {vendas.valor.toFixed(2)}
+                        </td>
+                        <td className="px-3 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                          {vendas.desconto.toFixed(2)}
                         </td>
                         <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
                           {vendas.pago? 'Pago': 'Aguardando pagamento'}
@@ -379,6 +388,7 @@ export function Venda() {
                 </table>
               </div>
             </div>
+            <h6 className="fixed right-1 bottom-1">Autor: Ruan Miniguite</h6>
           </div>
         </div>
       </div>

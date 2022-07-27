@@ -215,6 +215,7 @@ export function Funcionario() {
                 </table>
               </div>
             </div>
+            <h6 className="fixed right-1 bottom-1">Autor: Ruan Miniguite</h6>
           </div>
         </div>
       </div>

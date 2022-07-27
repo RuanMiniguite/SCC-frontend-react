@@ -1,5 +1,6 @@
 import { Sidebar } from "../../../components/Sidebar";
 import { Header } from "../../../components/Header";
+import { Title } from "../../../components/Title";
 import React from "react";
 
 export function CreateFuncionario() {
@@ -9,8 +10,8 @@ export function CreateFuncionario() {
         <Header />
         <div className="flex flex-row">
           <Sidebar />
-          <div className="flex flex-col items-center w-screen pt-10 min-w-0">
-            <h1 className="uppercase scale-125 text-center text-2xl tracking-widest">Cadastro de Funcionário</h1>
+          <div className="flex flex-col items-center w-screen min-w-0">
+            <Title title="Cadastro de Funcionário" />
             <form className="flex flex-col mt-10" action="http://localhost:8080/funcionarios" datatype="Json" method="post">
 
             <label className="text-base text-black" for="txtNomeCompleto">Nome Completo</label>

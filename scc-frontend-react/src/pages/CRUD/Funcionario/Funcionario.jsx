@@ -79,12 +79,12 @@ export function Funcionario() {
             </div>
             <div className="w-[100%] mt-7">
               <div className="shadow overflow-x-scroll border-b border-gray-200 sm:rounded-lg">
-                <table className="divide-gray-200 divide-y-2">
+                <table className="divide-gray-200 divide-y-2 m-2 border border-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
                       <th
                         scope="col"
-                        className="px-3 py-3 w-72 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Nome
                       </th>
@@ -162,7 +162,7 @@ export function Funcionario() {
                   <tbody className="bg-white divide-y divide-gray-200">
                     {funcionario.map(funcionario => (
                       <tr key={funcionario.codFuncionario}>
-                        <td className="px-3 py-4 w-72 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-3 py-4  w-[50%] whitespace-nowrap text-sm text-gray-500">
                           {funcionario.nome}
                         </td>
                         <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">

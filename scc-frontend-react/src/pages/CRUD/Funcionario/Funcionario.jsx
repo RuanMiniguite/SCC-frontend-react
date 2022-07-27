@@ -203,6 +203,11 @@ export function Funcionario() {
                             Edit
                           </a>
                         </td>
+                        <td className="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">
+                          <a href="#" className="text-red-600 hover:text-red-900">
+                            Remove
+                          </a>
+                        </td>
                       </tr>
                     ))}
                   </tbody>

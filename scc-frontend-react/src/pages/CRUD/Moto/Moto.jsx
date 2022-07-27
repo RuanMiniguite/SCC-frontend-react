@@ -182,20 +182,19 @@ export function Moto() {
   };
 
   return (
-    <>
-      <Header />
-      <Sidebar />
-      <div className="absolute left-[200px] p-4">
-        <h1>Página de Motos</h1>
-        <div className="flex flex-row mt-5">
-          <button className="p-1 bg-green-600 rounded-xl text-white" onClick={navigateToCreateMotos}>Cadastrar</button>
-        </div>
-
-        <div className="flex flex-col mt-5">
-          <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-              <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <table className="min-w-full divide-y divide-gray-200">
+    <div className="w-full h-full">
+      <div className="flex flex-col">
+        <Header />
+        <div className="flex flex-row">
+          <Sidebar />
+          <div className="flex flex-col">
+            <h1>Página de Motos</h1>
+            <div className="flex flex-row mt-5">
+              <button className="p-1 bg-green-600 rounded-md text-white" onClick={navigateToCreateMotos}>Cadastrar</button>
+            </div>
+            <div className="flex flex-col mt-5">
+              <div className="shadow w-[75%] overflow-x-scroll border-b border-gray-200 sm:rounded-lg">
+                <table className="divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
                       <th
@@ -328,7 +327,153 @@ export function Moto() {
           </div>
         </div>
       </div>
-    </>
+    </div>
 
   );
 }
+
+
+{/* 
+<div className="absolute left-[200px] p-4">
+  <h1>Página de Motos</h1>
+  <div className="flex flex-row mt-5">
+    <button className="p-1 bg-green-600 rounded-md text-white" onClick={navigateToCreateMotos}>Cadastrar</button>
+  </div>
+
+  <div className="flex flex-col mt-5">
+    <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+              <tr>
+                <th
+                  scope="col"
+                  className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Modelo
+                </th>
+                <th
+                  scope="col"
+                  className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Ano Fabricação
+                </th>
+                <th
+                  scope="col"
+                  className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Ano Modelo
+                </th>
+                <th
+                  scope="col"
+                  className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  CC
+                </th>
+                <th
+                  scope="col"
+                  className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Chassi
+                </th>
+                <th
+                  scope="col"
+                  className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Combustível
+                </th>
+                <th
+                  scope="col"
+                  className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Placa
+                </th>
+                <th
+                  scope="col"
+                  className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Valor
+                </th>
+                <th
+                  scope="col"
+                  className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Cor
+                </th>
+                <th
+                  scope="col"
+                  className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Marca
+                </th>
+                <th
+                  scope="col"
+                  className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Tipo Moto
+                </th>
+                <th
+                  scope="col"
+                  className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Cliente
+                </th>
+                <th scope="col" className="relative px-6 py-3">
+                  <span className="sr-only">Edit</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {motos.map(moto => (
+                <tr key={moto.codMoto}>
+                  <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {moto.modelo}
+                  </td>
+                  <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {moto.anoFabricacao}
+                  </td>
+                  <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {moto.anoModelo}
+                  </td>
+                  <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {moto.cc}
+                  </td>
+                  <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {moto.chassi}
+                  </td>
+                  <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {moto.combustivel}
+                  </td>
+                  <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {moto.placa}
+                  </td>
+                  <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {moto.valor}
+                  </td>
+                  <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {moto.cor}
+                  </td>
+                  <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {moto.marca}
+                  </td>
+                  <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {moto.tipoMoto.nome}
+                  </td>
+                  <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {moto.cliente ? moto.cliente.nome : ''}
+                  </td>
+                  <td className="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <a href="#" className="text-indigo-600 hover:text-indigo-900">
+                      Edit
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> */}

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export function Sidebar() {
     return (
-        <aside className="w-[200px] bg-gray-700 border-l border-gray-600 h-[750px] absolute">
+        <aside className="w-[200px] bg-gray-700 border-l border-gray-600 min-h-screen">
             <div className="text-white">
                 <nav>
                     <ul>

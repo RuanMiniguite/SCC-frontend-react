@@ -2,6 +2,7 @@ import { Sidebar } from "../../../components/Sidebar";
 import { Header } from "../../../components/Header";
 
 import { Link, useNavigate } from 'react-router-dom';
+import { Title } from "../../../components/Title";
 
 const motos = [
 
@@ -188,7 +189,7 @@ export function Moto() {
         <div className="flex flex-row">
           <Sidebar />
           <div className="flex flex-col items-center min-w-0 pt-10 w-screen">
-            <h1 className="uppercase scale-125 text-center text-2xl tracking-widest">Página de Motos</h1>
+            <Title title="Página de Motos" />
             <div className="flex flex-row mt-10">
               <button className="p-1 bg-red-600 hover:bg-red-400 rounded-md text-white" onClick={navigateToCreateMotos}>Cadastrar</button>
             </div>

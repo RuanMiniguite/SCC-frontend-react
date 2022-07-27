@@ -3,6 +3,8 @@ import { Header } from "../../../components/Header";
 import { useNavigate } from 'react-router-dom';
 import { FormEvent, useState } from "react";
 import React from "react";
+import { Title } from "../../../components/Title";
+
 
 
 export function CreateMoto() {
@@ -67,7 +69,7 @@ export function CreateMoto() {
                 <div className="flex flex-row">
                     <Sidebar />
                     <div className=" flex flex-col items-center min-w-0 pt-5 w-screen">
-                        <h1 className="uppercase scale-125">Página de Motos</h1>
+                        <Title title="Cadastrar Motos" />
                         <form className="flex flex-col mt-7" onSubmit={handleSubmit} method="post">
                             <label className="text-base text-black" for="txtModelo">Modelo</label>
                             <input

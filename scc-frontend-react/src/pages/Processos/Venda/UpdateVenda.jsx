@@ -1,11 +1,10 @@
 import { Sidebar } from "../../../components/Sidebar";
 import { Header } from "../../../components/Header";
-import { useNavigate } from 'react-router-dom';
-import { FormEvent, useState } from "react";
-import React from "react";
+import { Title } from "../../../components/Title";
 
-export function UpdateFuncionario() {
+import { Link, useNavigate } from 'react-router-dom';
 
+export function UpdateVenda() {
   const navigate = useNavigate();
 
   return (
@@ -14,8 +13,8 @@ export function UpdateFuncionario() {
         <Header />
         <div className="flex flex-row">
           <Sidebar />
-          <div className="flex flex-col items-center w-screen pt-10 min-w-0">
-            <h1 className="uppercase scale-125 text-center text-2xl tracking-widest">UpdateFuncionario</h1>
+          <div className="flex flex-col items-center min-w-0 w-screen">
+            <Title title="Editar Venda" />
           </div>
         </div>
       </div>

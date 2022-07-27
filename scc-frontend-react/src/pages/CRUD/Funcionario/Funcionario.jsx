@@ -77,80 +77,80 @@ export function Funcionario() {
             <div className="flex flex-row mt-5">
               <button className="p-1 bg-red-600 hover:bg-red-400 rounded-md text-white" onClick={navigateToCreateFuncionario}>Cadastrar</button>
             </div>
-            <div className="w-[100%] flex mt-7">
+            <div className="w-[100%] flex mt-7 2xl:ml-20">
               <div className="shadow  overflow-x-scroll border-b border-gray-200 sm:rounded-lg">
                 <table className="divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Nome
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Cpf
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Telefone
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Data Nascimento
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Estado
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         CEP
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Cidade
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Bairro
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Cargo
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Salario
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Admin
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
                       >
                         Data admissão
                       </th>
@@ -171,7 +171,7 @@ export function Funcionario() {
                         <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
                           {funcionario.telefone}
                         </td>
-                        <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-3 py-4 whitespace-nowrap text-sm text-center text-gray-500">
                           {funcionario.dataNascimento}
                         </td>
                         <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -192,10 +192,10 @@ export function Funcionario() {
                         <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
                           {funcionario.salario}
                         </td>
-                        <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-3 py-4 whitespace-nowrap text-sm text-center text-gray-500">
                           {funcionario.admin}
                         </td>
-                        <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-3 py-4 whitespace-nowrap text-sm text-center text-gray-500">
                           {funcionario.dataAdmissao}
                         </td>
                         <td className="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">

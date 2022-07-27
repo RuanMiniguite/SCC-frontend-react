@@ -187,14 +187,14 @@ export function Moto() {
         <Header />
         <div className="flex flex-row">
           <Sidebar />
-          <div className="flex flex-col">
-            <h1>Página de Motos</h1>
+          <div className=" flex flex-col items-center min-w-0 pt-5 w-screen">
+            <h1 className="uppercase scale-125">Página de Motos</h1>
             <div className="flex flex-row mt-5">
-              <button className="p-1 bg-green-600 rounded-md text-white" onClick={navigateToCreateMotos}>Cadastrar</button>
+              <button className="p-1 bg-red-600 hover:bg-red-400 rounded-md text-white" onClick={navigateToCreateMotos}>Cadastrar</button>
             </div>
-            <div className="flex flex-col mt-5">
-              <div className="shadow w-[75%] overflow-x-scroll border-b border-gray-200 sm:rounded-lg">
-                <table className="divide-y divide-gray-200">
+            <div className="w-[100%] mt-7">
+              <div className="shadow overflow-x-scroll border-b border-gray-200 sm:rounded-lg">
+                <table className="divide-y divide-gray-200 m-2 border border-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
                       <th

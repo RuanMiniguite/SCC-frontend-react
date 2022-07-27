@@ -77,7 +77,7 @@ export function Funcionario() {
             <div className="flex flex-row mt-5">
               <button className="p-1 bg-green-600 rounded-md text-white" onClick={navigateToCreateFuncionario}>Cadastrar</button>
             </div>
-            <div className="w-[100%] flex ml-7 mt-7">
+            <div className="w-[100%] flex mt-7">
               <div className="shadow  overflow-x-scroll border-b border-gray-200 sm:rounded-lg">
                 <table className="divide-y divide-gray-200">
                   <thead className="bg-gray-50">
@@ -86,73 +86,73 @@ export function Funcionario() {
                         scope="col"
                         className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        Modelo
+                        Nome
                       </th>
                       <th
                         scope="col"
                         className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        Ano Fabricação
+                        Cpf
                       </th>
                       <th
                         scope="col"
                         className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        Ano Modelo
+                        Telefone
                       </th>
                       <th
                         scope="col"
                         className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        CC
+                        Data Nascimento
                       </th>
                       <th
                         scope="col"
                         className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        Chassi
+                        Estado
                       </th>
                       <th
                         scope="col"
                         className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        Combustível
+                        CEP
                       </th>
                       <th
                         scope="col"
                         className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        Placa
+                        Cidade
                       </th>
                       <th
                         scope="col"
                         className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        Valor
+                        Bairro
                       </th>
                       <th
                         scope="col"
                         className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        Cor
+                        Cargo
                       </th>
                       <th
                         scope="col"
                         className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        Marca
+                        Salario
                       </th>
                       <th
                         scope="col"
                         className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        Tipo Moto
+                        Admin
                       </th>
                       <th
                         scope="col"
                         className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        Cliente
+                        Data admissão
                       </th>
                       <th scope="col" className="relative px-6 py-3">
                         <span className="sr-only">Edit</span>

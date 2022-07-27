@@ -9,9 +9,9 @@ export function CreateFuncionario() {
         <Header />
         <div className="flex flex-row">
           <Sidebar />
-          <div className="flex flex-col items-center w-screen pt-5 min-w-0">
-            <h1 className="uppercase scale-125 text-center">Cadastro de Funcionário</h1>
-            <form className="flex flex-col mt-7" action="http://localhost:8080/funcionarios" datatype="Json" method="post">
+          <div className="flex flex-col items-center w-screen pt-10 min-w-0">
+            <h1 className="uppercase scale-125 text-center text-2xl tracking-widest">Cadastro de Funcionário</h1>
+            <form className="flex flex-col mt-10" action="http://localhost:8080/funcionarios" datatype="Json" method="post">
 
             <label className="text-base text-black" for="txtNomeCompleto">Nome Completo</label>
             <input className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="text" name="NomeCompleto" id="txtNomeCompleto" placeholder="Digite aqui o nome" size="20" maxlength="20" autocomplete="off" required /><br />

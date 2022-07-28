@@ -1,9 +1,11 @@
 import { Sidebar } from "../../../components/Sidebar";
 import { Header } from "../../../components/Header";
 import { Title } from "../../../components/Title";
+import axios from "axios";
 
 import { Link, useNavigate } from 'react-router-dom';
 
+const API = 'http://api.open-notify.org/astros.json';
 const funcionario = [
   {
       "codFuncionario": 1,
@@ -58,8 +60,12 @@ const funcionario = [
   }
 ]
 
-
 export function Funcionario() {
+  
+  axios.get(API).then(response => {
+    console.log(response.status)
+    console.log(response.data)
+  })
   
   const navigate = useNavigate();
 

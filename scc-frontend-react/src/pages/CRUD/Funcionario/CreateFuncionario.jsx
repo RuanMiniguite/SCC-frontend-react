@@ -2,7 +2,7 @@ import { Sidebar } from "../../../components/Sidebar";
 import { Header } from "../../../components/Header";
 import { Title } from "../../../components/Title";
 import { useNavigate } from 'react-router-dom';
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import axios from 'axios';
 
 const API = 'http://localhost:8080/funcionarios/';
@@ -26,23 +26,23 @@ export function CreateFuncionario() {
 
   let handleSubmit = async (e) => {
     e.preventDefault();
-      let aux;
+    let aux;
 
-      if(admin === 'true'){
-        aux = 1;
-      }else{
-        aux = 0;
-      }
+    if(admin === 'true'){
+      aux = 1;
+    }else{
+      aux = 0;
+    }
 
-      axios.post(API, {
-        nome, cpf, telefone, dataNascimento, estado, cep, cidade, bairro, login: email, senha, cargo, salario, admin: aux, dataAdmissao: dataDeHoje
-      }).then(response => {
-        alert('Funcionario: ' + response.data.nome + ' cadastrado com sucesso!');
-        navigateToFuncionario();
-      })
-      .catch(error => {
-        alert('Erro ao cadastrar funcionario! \nStatus: ' + error.response.data.status + '\n' + error.response.data.message);
-      });
+    axios.post(API, {
+      nome, cpf, telefone, dataNascimento, estado, cep, cidade, bairro, login: email, senha, cargo, salario, admin: aux, dataAdmissao: dataDeHoje
+    }).then(response => {
+      alert('Funcionario: ' + response.data.nome + ' cadastrado com sucesso!');
+      navigateToFuncionario();
+    })
+    .catch(error => {
+      alert('Erro ao cadastrar funcionario! \nStatus: ' + error.response.data.status + '\n' + error.response.data.message);
+    });
   }
 
   const navigate = useNavigate();
@@ -75,36 +75,36 @@ export function CreateFuncionario() {
               <br />
 
               <label for="txtEstado">Estado</label>
-              <input onChange={event => setEstado(event.target.value)} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="text" name="Estado" id="txtEstado" list="estado" placeholder="Informe Estado" required /><br />
-              <datalist id="estado">
-                <option value="AC"></option>
-                <option value="AL"></option>
-                <option value="AP"></option>
-                <option value="AM"></option>
-                <option value="BA"></option>
-                <option value="CE"></option>
-                <option value="DF"></option>
-                <option value="ES"></option>
-                <option value="GO"></option>
-                <option value="MA"></option>
-                <option value="MT"></option>
-                <option value="MS"></option>
-                <option value="MG"></option>
-                <option value="PA"></option>
-                <option value="PB"></option>
-                <option value="PR"></option>
-                <option value="PE"></option>
-                <option value="PI"></option>
-                <option value="RJ"></option>
-                <option value="RN"></option>
-                <option value="RS"></option>
-                <option value="RO"></option>
-                <option value="RR"></option>
-                <option value="SC"></option>
-                <option value="SP"></option>
-                <option value="SE"></option>
-                <option value="TO"></option>
-              </datalist>
+              <select onChange={event => setEstado(event.target.value)} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="text" name="Estado" id="txtEstado" list="estado" placeholder="Informe Estado" required>
+                <option value="" selected disabled hidden>Selecione o Estado</option>
+                <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AP">AP</option>
+                <option value="AM">AM</option>
+                <option value="BA">BA</option>
+                <option value="CE">CE</option>
+                <option value="DF">DF</option>
+                <option value="ES">ES</option>
+                <option value="GO">GO</option>
+                <option value="MA">MA</option>
+                <option value="MT">MT</option>
+                <option value="MS">MS</option>
+                <option value="MG">MG</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PR">PR</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RS">RS</option>
+                <option value="RO">RO</option>
+                <option value="RR">RR</option>
+                <option value="SC">SC</option>
+                <option value="SP">SP</option>
+                <option value="SE">SE</option>
+                <option value="TO">TO</option>
+              </select><br />
 
               <label for="txtCep">Cep</label>
               <input onChange={event => setCep(event.target.value)} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="text" name="cep" id="txtCep" placeholder="Digite no formato xxxxx-xxx" Pattern="[0-9]{5[0-9]{3}" required /><br />
@@ -123,24 +123,24 @@ export function CreateFuncionario() {
               <label for="txtSenha">Senha</label>
               <input onChange={event => setSenha(event.target.value)} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="password" name="Senha" id="txtSenha" placeholder="Mínimo de 6 caracteres" pattern="[0-9]{6}" required /><br />
 
-              <label for="txtCargo">Cargo</label>
-              <input onChange={event => setCargo(event.target.value)} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="text" name="Cargo" id="txtCargo" list="cargo" placeholder="Informe Cargo" required /><br />
-              <datalist id="cargo">
-                <option value="Gerente"></option>
-                <option value="Vendedor"></option>
-                <option value="Mecânico"></option>
-                <option value="Outro"></option>
-              </datalist>
+              <label className="text-base text-black" for="txtCargo">Cargo</label>
+              <select className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" onChange={event => setCargo(event.target.value)} name="txtCargo" id="txtCargo" list="Cargo" placeholder="Selecione o Cargo" required>
+                <option value="" selected disabled hidden>Selecione o Cargo</option>
+                <option value="Gerente">Gerente</option>
+                <option value="Vendedor">Vendedor</option>
+                <option value="Mecânico">Mecânico</option>
+                <option value="Outro">Outro</option>
+              </select><br />
+
 
               <label for="txtSalario">Salario</label>
               <input onChange={event => setSalario(event.target.value)} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="text" id="txtSalario" name="Salario" placeholder="Digite aqui o salario" required /><br />
-              
+
               <div>
                 <input onChange={event => setAdmin(event.target.value)} className="bg-transparent min-h-[20px] w-[30px] border border-gray-300 text-base mr-1" type="checkbox" name="Admin" id="admin" />
                 <label for="admin">Permição - Admin</label>
               </div>
-              
-            
+
               <div className="flex flex-row justify-center mt-3">
                 <button className="p-1 mt-5 bg-gray-700 hover:bg-red-600 rounded-md text-white w-[100px] mb-12 mr-4" type="submit">Salvar</button>
                 <button className="p-1 mt-5 border-2 border-gray-700 hover:bg-red-600 hover:border-red-600 hover:text-white rounded-md text-black w-[100px] mb-12 ml-4" type="reset" onClick={navigateToFuncionario}>Cancelar</button>

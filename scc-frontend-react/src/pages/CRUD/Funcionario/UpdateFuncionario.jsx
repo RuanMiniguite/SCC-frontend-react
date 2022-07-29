@@ -1,7 +1,7 @@
 import { Sidebar } from "../../../components/Sidebar";
 import { Header } from "../../../components/Header";
 import { useNavigate, useParams } from 'react-router-dom';
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Title } from "../../../components/Title";
 import React from "react";
 import axios from 'axios';
@@ -100,36 +100,36 @@ export function UpdateFuncionario() {
               <br />
 
               <label for="txtEstado">Estado</label>
-              <input onChange={event => setEstado(event.target.value)} value={estado} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="text" name="Estado" id="txtEstado" list="estado" placeholder="Informe Estado" required /><br />
-              <datalist id="estado">
-                <option value="AC"></option>
-                <option value="AL"></option>
-                <option value="AP"></option>
-                <option value="AM"></option>
-                <option value="BA"></option>
-                <option value="CE"></option>
-                <option value="DF"></option>
-                <option value="ES"></option>
-                <option value="GO"></option>
-                <option value="MA"></option>
-                <option value="MT"></option>
-                <option value="MS"></option>
-                <option value="MG"></option>
-                <option value="PA"></option>
-                <option value="PB"></option>
-                <option value="PR"></option>
-                <option value="PE"></option>
-                <option value="PI"></option>
-                <option value="RJ"></option>
-                <option value="RN"></option>
-                <option value="RS"></option>
-                <option value="RO"></option>
-                <option value="RR"></option>
-                <option value="SC"></option>
-                <option value="SP"></option>
-                <option value="SE"></option>
-                <option value="TO"></option>
-              </datalist>
+              <select onChange={event => setEstado(event.target.value)} value={estado} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="text" name="Estado" id="txtEstado" list="estado" placeholder="Informe Estado" required>
+                <option value="" selected disabled hidden>Selecione o Estado</option>
+                <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AP">AP</option>
+                <option value="AM">AM</option>
+                <option value="BA">BA</option>
+                <option value="CE">CE</option>
+                <option value="DF">DF</option>
+                <option value="ES">ES</option>
+                <option value="GO">GO</option>
+                <option value="MA">MA</option>
+                <option value="MT">MT</option>
+                <option value="MS">MS</option>
+                <option value="MG">MG</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PR">PR</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RS">RS</option>
+                <option value="RO">RO</option>
+                <option value="RR">RR</option>
+                <option value="SC">SC</option>
+                <option value="SP">SP</option>
+                <option value="SE">SE</option>
+                <option value="TO">TO</option>
+              </select><br />
 
               <label for="txtCep">Cep</label>
               <input onChange={event => setCep(event.target.value)} value={cep} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="text" name="cep" id="txtCep" placeholder="Digite no formato xxxxx-xxx" Pattern="[0-9]{5[0-9]{3}" required /><br />

@@ -1,10 +1,9 @@
 import { Sidebar } from "../../../components/Sidebar";
 import { Header } from "../../../components/Header";
 import { Title } from "../../../components/Title";
-import axios from "axios";
-
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from "react";
+import axios from "axios";
 
 const API = 'http://localhost:8080/funcionarios/';
 let funcionario = [];
@@ -18,7 +17,6 @@ export function Funcionario() {
   }, []);
   
   const navigate = useNavigate();
-
   const navigateToCreateFuncionario = () => {
     navigate('/funcionario/createFuncionario');
   };

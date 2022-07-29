@@ -2,7 +2,7 @@ import { Header } from "../../../components/Header";
 import { Sidebar } from "../../../components/Sidebar";
 import { Title } from "../../../components/Title";
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
 
 import axios from "axios";
@@ -10,18 +10,20 @@ import axios from "axios";
 const API = 'http://localhost:8080'
 
 
-export function CreateRevisao() {
+export function UpdateRevisao() {
 
     const [aux, setAux] = useState('')
-
+    //Response das get routes
     const [produtos, setProdutos] = useState([])
     const [motos, setMotos] = useState([])
     const [funcionarios, setFuncionarios] = useState([])
+
     const [data, setData] = useState('')
     const [funcionario, setFuncionario] = useState('')
     const [moto, setMoto] = useState('')
     const [valorTotal, setValorTotal] = useState('')
     const [inputList, setinputList] = useState([{ valorUnitario: '', qtd: '', produto: { id: '', nome: '', marca: '', valor: '', } }])
+
 
     useEffect(() => {
         axios.get(`${API}/produtos`)
@@ -39,6 +41,22 @@ export function CreateRevisao() {
         axios.get(`${API}/funcionarios`)
             .then(res => {
                 setFuncionarios(res.data)
+            })
+            .catch(err => alert(err.response.data.message))
+    }, []);
+
+    //GET DADOS DA REVISAO SELECIONADA
+
+    let params = useParams();
+
+    useEffect(() => {
+        axios.get(`${API}/revisoes/${params.codRevisao}`)
+            .then(res => {
+                setData(res.data.data)
+                setFuncionario(res.data.funcionario.codFuncionario)
+                setMoto(res.data.moto.codMoto)
+                setValorTotal(res.data.valor)
+                setinputList(res.data.itens)
             })
             .catch(err => alert(err.response.data.message))
     }, []);
@@ -82,7 +100,8 @@ export function CreateRevisao() {
             }
         })
 
-        await axios.post(`${API}/revisoes`, {
+        await axios.put(`${API}/revisoes/${params.codRevisao}`, {
+            codRevisao: params.codRevisao,
             data: data,
             valor: valorTotal,
             funcionario: {
@@ -118,6 +137,7 @@ export function CreateRevisao() {
                             <input
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setData(event.target.value)}
+                                value={data}
                                 type="date"
                                 name="Data"
                                 id="data"
@@ -129,6 +149,7 @@ export function CreateRevisao() {
                             <select
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setFuncionario(event.target.value)}
+                                value={funcionario}
                                 name="Funcionario"
                                 id="txtFuncionario"
                                 placeholder="Selecione o Funcionário"
@@ -145,6 +166,7 @@ export function CreateRevisao() {
                             <select
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setMoto(event.target.value)}
+                                value={moto}
                                 name="txtMotos"
                                 id="txtMotos"
                                 list="motos"
@@ -168,6 +190,7 @@ export function CreateRevisao() {
                                                 <select
                                                     className="bg-transparent min-h-[30px] w-[400px] border border-gray-300 text-base px-2 m-1"
                                                     onChange={(e) => handleinputchange(e, i)}
+                                                    value={inputList[i].produto.id}
                                                     name="id"
                                                     id="id"
                                                     placeholder="Selecione o Produto"
@@ -186,7 +209,10 @@ export function CreateRevisao() {
                                                     type="number"
                                                     name="qtd"
                                                     placeholder="Qtd"
-                                                    onChange={e => handleinputchange(e, i)} />
+                                                    onChange={e => handleinputchange(e, i)}
+                                                    value={inputList[i].qtd}
+                                                />
+
                                             </div>
                                             <div className="mt-4">
                                                 {
@@ -205,6 +231,7 @@ export function CreateRevisao() {
                             <input
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setValorTotal(event.target.value)}
+                                value={valorTotal}
                                 type="number"
                                 name="numValorTotal"
                                 id="numValorTotal"

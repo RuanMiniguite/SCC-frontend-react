@@ -10,6 +10,8 @@ import { Moto } from './pages/CRUD/Moto/Moto'
 import { Recall } from './pages/Processos/Recall'
 import { ComissaoFuncionario } from './pages/Processos/ComissaoFuncionario'
 import { Revisao } from './pages/Processos/Revisao/Revisao'
+import { CreateRevisao } from "./pages/Processos/Revisao/CreateRevisao";
+import { UpdateRevisao } from "./pages/Processos/Revisao/UpdateRevisao"
 import { R_Comissao } from './pages/Relatorios/R_Comissao'
 import { R_MotosVendidas } from './pages/Relatorios/R_MotosVendidas'
 import { R_Produtos } from './pages/Relatorios/R_Produtos'
@@ -19,7 +21,6 @@ import { UpdateMoto } from "./pages/CRUD/Moto/UpdateMoto";
 import { DeleteMoto } from "./pages/CRUD/Moto/DeleteMoto";
 import { UpdateFuncionario } from "./pages/CRUD/Funcionario/UpdateFuncionario";
 import { DeleteFuncionario } from "./pages/CRUD/Funcionario/DeleteFuncionario";
-import { CreateRevisao } from "./pages/Processos/Revisao/CreateRevisao";
 import { Venda } from './pages/Processos/Venda/Venda';
 import { CreateVenda } from "./pages/Processos/Venda/CreateVenda";
 import { UpdateVenda } from './pages/Processos/Venda/UpdateVenda';
@@ -61,6 +62,7 @@ export function Router() {
 
             <Route path="/revisao" element={<Revisao />} />
             <Route path="/revisao/createRevisao" element={<CreateRevisao />} />
+            <Route path="/revisao/updateRevisao/:codRevisao" element={<UpdateRevisao />} />
 
             <Route path="/r_MotosVendidas" element={<R_MotosVendidas />} />
             <Route path="/r_Comissao" element={<R_Comissao />} />

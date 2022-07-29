@@ -3,9 +3,10 @@ import { Header } from "../../../components/Header";
 import { Title } from "../../../components/Title";
 import { useNavigate } from 'react-router-dom';
 import { FormEvent, useState } from "react";
+import axios from 'axios';
 
 const API = 'http://localhost:8080/funcionarios/';
-const APItest = 'https://webhook.site/b039f6e4-d703-488b-80cc-7505afbb15f6';
+let dataDeHoje = new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate();
 
 export function CreateFuncionario() {
 
@@ -21,39 +22,27 @@ export function CreateFuncionario() {
   const [senha, setSenha] = useState('');
   const [cargo, setCargo] = useState('');
   const [salario, setSalario] = useState('');
+  const [admin, setAdmin] = useState('');
 
   let handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      let response = await fetch(APItest, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: JSON.stringify({
-          nome: nome,
-          cpf: cpf,
-          telefone: telefone,
-          dataNascimento: dataNascimento,
-          estado: estado,
-          cep: cep,
-          cidade: cidade,
-          bairro: bairro,
-          email: email,
-          senha: senha,
-          cargo: cargo,
-          salario: salario
-        }),
-      });
-      let data = await response.json();
-      if (response.status === 200) {
-        alert('Funcionario criado com sucesso!');
-        navigate('/funcionario');
+      let aux;
+
+      if(admin === 'true'){
+        aux = 1;
       }else{
-        alert('Erro ao criar funcionario!');
+        aux = 0;
       }
-    }
-    catch (err) {
-      console.log(err);
-    }
+
+      axios.post(API, {
+        nome, cpf, telefone, dataNascimento, estado, cep, cidade, bairro, login: email, senha, cargo, salario, admin: aux, dataAdmissao: dataDeHoje
+      }).then(response => {
+        alert('Funcionario: ' + response.data.nome + ' cadastrado com sucesso!');
+        navigateToFuncionario();
+      })
+      .catch(error => {
+        alert('Erro ao cadastrar funcionario! \nStatus: ' + error.response.data.status + '\n' + error.response.data.message);
+      });
   }
 
   const navigate = useNavigate();
@@ -132,7 +121,7 @@ export function CreateFuncionario() {
               <input onChange={event => setEmail(event.target.value)} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="email" name="Email" id="txtEmail" placeholder="Digite aqui o E-mail" required /><br />
 
               <label for="txtSenha">Senha</label>
-              <input onChange={event => setSenha(event.target.value)} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="password" name="Senha" id="txtSenha" placeholder="Mínimo de 5 caracteres" pattern="[0-9]{5}" required /><br />
+              <input onChange={event => setSenha(event.target.value)} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="password" name="Senha" id="txtSenha" placeholder="Mínimo de 6 caracteres" pattern="[0-9]{6}" required /><br />
 
               <label for="txtCargo">Cargo</label>
               <input onChange={event => setCargo(event.target.value)} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="text" name="Cargo" id="txtCargo" list="cargo" placeholder="Informe Cargo" required /><br />
@@ -144,8 +133,15 @@ export function CreateFuncionario() {
               </datalist>
 
               <label for="txtSalario">Salario</label>
-              <input onChange={event => setSalario(event.target.value)} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="text" id="txtSalario" name="Salario" placeholder="Digite aqui o salario" required />
-              <div className="flex flex-row justify-center">
+              <input onChange={event => setSalario(event.target.value)} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="text" id="txtSalario" name="Salario" placeholder="Digite aqui o salario" required /><br />
+              
+              <div>
+                <input onChange={event => setAdmin(event.target.value)} className="bg-transparent min-h-[20px] w-[30px] border border-gray-300 text-base mr-1" type="checkbox" name="Admin" id="admin" />
+                <label for="admin">Permição - Admin</label>
+              </div>
+              
+            
+              <div className="flex flex-row justify-center mt-3">
                 <button className="p-1 mt-5 bg-gray-700 hover:bg-red-600 rounded-md text-white w-[100px] mb-12 mr-4" type="submit">Salvar</button>
                 <button className="p-1 mt-5 border-2 border-gray-700 hover:bg-red-600 hover:border-red-600 hover:text-white rounded-md text-black w-[100px] mb-12 ml-4" type="reset" onClick={navigateToFuncionario}>Cancelar</button>
               </div>

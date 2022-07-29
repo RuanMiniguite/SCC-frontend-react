@@ -4,15 +4,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { FormEvent, useEffect, useState } from "react";
 import { Title } from "../../../components/Title";
 import React from "react";
+import axios from 'axios';
 
 const API = 'http://localhost:8080/funcionarios/';
-const APItest = 'https://webhook.site/b039f6e4-d703-488b-80cc-7505afbb15f6';
 
 export function UpdateFuncionario() {
   
-  let params = useParams();
-  const navigate = useNavigate();
-
   const [nome, setNome] = useState('');
   const [cpf, setCpf] = useState('');
   const [telefone, setTelefone] = useState('');
@@ -25,67 +22,58 @@ export function UpdateFuncionario() {
   const [senha, setSenha] = useState('');
   const [cargo, setCargo] = useState('');
   const [salario, setSalario] = useState('');
-
-  let handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      let response = await fetch(APItest, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: JSON.stringify({
-          nome: nome,
-          cpf: cpf,
-          telefone: telefone,
-          dataNascimento: dataNascimento,
-          estado: estado,
-          cep: cep,
-          cidade: cidade,
-          bairro: bairro,
-          email: email,
-          senha: senha,
-          cargo: cargo,
-          salario: salario
-        }),
-      });
-      let data = await response.json();
-      if (response.status === 200) {
-        alert('Funcionario criado com sucesso!');
-        navigate('/funcionario');
-      }else{
-        alert('Erro ao criar funcionario!');
-      }
-    }
-    catch (err) {
-      console.log(err);
-    }
-  }
-
-  useEffect(() => {
-    fetch(API + params.codFuncionario, {
-      method: 'GET',
-      mode: 'no-cors',
-    })
-      .then(response => response.json())
-      .then(data => {
-        setNome(data.nome);
-        setCpf(data.cpf);
-        setTelefone(data.telefone);
-        setDataNascimento(data.dataNascimento);
-        setEstado(data.estado);
-        setCep(data.cep);
-        setCidade(data.cidade);
-        setBairro(data.bairro);
-        setEmail(data.email);
-        setSenha(data.senha);
-        setCargo(data.cargo);
-        setSalario(data.salario);
-      })
-      .catch(err => console.log(err));
-  }, []);
-
+  const [admin, setAdmin] = useState('');
+  const [dataAdmissao, setDataAdmissao] = useState('');
+  
+  let params = useParams();
+  const navigate = useNavigate();
   const navigateToFuncionario = () => {
     navigate('/funcionario');
   };
+
+  useEffect(() => {
+    axios.get(API + params.codFuncionario).then(response => {
+      setNome(response.data.nome);
+      setCpf(response.data.cpf);
+      setTelefone(response.data.telefone);
+      setDataNascimento(response.data.dataNascimento);
+      setEstado(response.data.estado);
+      setCep(response.data.cep);
+      setCidade(response.data.cidade);
+      setBairro(response.data.bairro);
+      setEmail(response.data.login);
+      setSenha(response.data.senha);
+      setCargo(response.data.cargo);
+      setSalario(response.data.salario);
+      setAdmin(response.data.admin);
+      setDataAdmissao(response.data.dataAdmissao);
+    })
+    .catch(error => {
+      alert('Erro ao buscar funcionario! \nStatus: ' + error.response.data.status + '\n' + error.response.data.message);
+    });
+  }, []);
+
+
+  let handleSubmit = async (e) => {
+    e.preventDefault();
+      let aux;
+
+      if(admin === 'true'){
+        aux = 1;
+      }else{
+        aux = 0;
+      }
+
+      axios.put(API + params.codFuncionario, {
+        codFuncionario: params.codFuncionario, nome, cpf, telefone, dataNascimento, estado, cep, cidade, bairro, login: email, senha, cargo, salario, admin: aux, dataAdmissao
+      }).then(response => {
+        alert('Funcionario: ' + response.data.nome + ' atualizado com sucesso!');
+        navigateToFuncionario();
+      })
+      .catch(error => {
+        alert('Erro ao atualizar funcionario! \nStatus: ' + error.response.data.status + '\n' + error.response.data.message);
+      });
+  }
 
   return (
     <div className="w-full h-full">
@@ -94,7 +82,7 @@ export function UpdateFuncionario() {
         <div className="flex flex-row">
           <Sidebar />
           <div className="flex flex-col items-center w-screen min-w-0">
-            <Title title="Cadastro de Funcionário" />
+            <Title title="Editar Cadastro de Funcionário" />
             <form className="flex flex-col mt-10" onSubmit={handleSubmit} method="post">
 
               <label className="text-base text-black" for="txtNomeCompleto">Nome Completo</label>
@@ -158,7 +146,7 @@ export function UpdateFuncionario() {
               <input onChange={event => setEmail(event.target.value)} value={email} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="email" name="Email" id="txtEmail" placeholder="Digite aqui o E-mail" required /><br />
 
               <label for="txtSenha">Senha</label>
-              <input onChange={event => setSenha(event.target.value)} value={senha} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="password" name="Senha" id="txtSenha" placeholder="Mínimo de 5 caracteres" pattern="[0-9]{5}" required /><br />
+              <input onChange={event => setSenha(event.target.value)} value={senha} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="password" name="Senha" id="txtSenha" placeholder="Mínimo de 6 caracteres" pattern="[0-9]{6}" required /><br />
 
               <label for="txtCargo">Cargo</label>
               <input onChange={event => setCargo(event.target.value)} value={cargo} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="text" name="Cargo" id="txtCargo" list="cargo" placeholder="Informe Cargo" required /><br />
@@ -172,8 +160,8 @@ export function UpdateFuncionario() {
               <label for="txtSalario">Salario</label>
               <input onChange={event => setSalario(event.target.value)} value={salario} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="text" id="txtSalario" name="Salario" placeholder="Digite aqui o salario" required />
               <div className="flex flex-row justify-center">
-                <button className="p-1 mt-5 bg-gray-700 hover:bg-red-600 rounded-md text-white w-[100px] mb-12 mr-4" type="submit">Salvar</button>
-                <button className="p-1 mt-5 border-2 border-gray-700 hover:bg-red-600 hover:border-red-600 hover:text-white rounded-md text-black w-[100px] mb-12 ml-4" type="reset" onClick={navigateToFuncionario}>Cancelar</button>
+                <button className="p-1 mt-5 bg-gray-700 hover:bg-red-600 rounded-md text-white w-[100px] mb-12 mr-4" type="submit">Editar</button>
+                <button className="p-1 mt-5 border-2 border-gray-700 hover:bg-red-600 hover:border-red-600 hover:text-white rounded-md text-black w-[100px] mb-12 ml-4" onClick={navigateToFuncionario} type="reset">Cancelar</button>
               </div>
             </form>
           </div>

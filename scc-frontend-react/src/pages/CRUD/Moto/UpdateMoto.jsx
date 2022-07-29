@@ -1,84 +1,72 @@
-import { Sidebar } from "../../../components/Sidebar";
 import { Header } from "../../../components/Header";
+import { Sidebar } from "../../../components/Sidebar";
+import { Title } from "../../../components/Title";
+
 import { useNavigate, useParams } from 'react-router-dom';
 import { FormEvent, useState, useEffect } from "react";
 import React from "react";
-import { Title } from "../../../components/Title";
+
+import axios from "axios";
+
+const API = 'http://localhost:8080'
 
 
 export function UpdateMoto() {
-
-    let params = useParams();
     const navigate = useNavigate();
 
+    const [codCliente, setCodCliente] = useState('')
     const [modelo, setModelo] = useState('')
-    const [tipoMoto, setTipoMoto] = useState('')
-    const [dataFab, setDataFab] = useState('')
-    const [dataModelo, setDataModelo] = useState('')
+    const [marca, setMarca] = useState('')
+    const [idTipoMoto, setIdTipoMoto] = useState('')
+    const [tipoMotoNome, settipoMotoNome] = useState('')
+
+    const [anoFab, setAnoFab] = useState('')
+    const [anoModelo, setAnoModelo] = useState('')
     const [cor, setCor] = useState('')
     const [combustivel, setCombustivel] = useState('')
     const [cilindrada, setCilindrada] = useState('')
     const [chassi, setChassi] = useState('')
     const [placa, setPlaca] = useState('')
     const [valor, setValor] = useState('')
-    const [motoVend, setMotoVend] = useState('')
+
+    let params = useParams();
+
+    useEffect(() => {
+        axios.get(`${API}/motos/${params.codMoto}`)
+            .then(res => {
+                setModelo(res.data.modelo)
+                setMarca(res.data.marca)
+                setIdTipoMoto(res.data.tipoMoto.codTipo)
+                settipoMotoNome(res.data.tipoMoto.nome)
+                setAnoFab(res.data.anoFabricacao)
+                setAnoModelo(res.data.anoModelo)
+                setCor(res.data.cor)
+                setCombustivel(res.data.combustivel)
+                setCilindrada(res.data.cc)
+                setChassi(res.data.chassi)
+                setPlaca(res.data.placa)
+                setValor(res.data.valor)
+                setCodCliente(res.data.cliente.codCliente)
+            })
+            .catch(err => alert(err.response.data.message))
+    }, []);
 
     let handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            let res = await fetch("https://webhook.site/4a80d66f-d12c-49c1-bcae-200481ce1eac", {
-                method: "POST",
-                mode: "no-cors",
-                body: JSON.stringify({
-                    modelo: modelo,
-                    tipoMoto: tipoMoto,
-                    dataFab: dataFab,
-                    dataModelo: dataModelo,
-                    cor: cor,
-                    combustivel: combustivel,
-                    cilindrada: cilindrada,
-                    chassi: chassi,
-                    placa: placa,
-                    valor: valor,
-                    motoVend: motoVend,
-                }),
-            });
-            //let resJson = await res.json();
-            if (res.status === 0) {
-                //setModelo("");
-                console.log("Motodo cadastrada com sucesso!")
-                navigate('/moto')
-                //setMessage("User created successfully");
-            } else {
-                console.log("Erro ao cadastrar moto!")
-                navigate('/moto')
-            }
-        } catch (err) {
-            console.log(err);
-        }
-    };
 
-    useEffect(() => {
-        fetch(`https://jsonplaceholder.typicode.com/todos/${params.codMoto}`, {
-            method: 'GET',
+        await axios.put(`${API}/motos/${params.codMoto}`, {
+            cliente: { codCliente: codCliente }, codMoto: params.codMoto, modelo, marca, tipoMoto: { codTipo: idTipoMoto, nome: tipoMotoNome }, anoFabricacao: anoFab, anoModelo, cor, combustivel, cc: cilindrada, chassi, placa, valor,
         })
-            .then(response => response.json())
-            .then(json => {
-                //setModelo(json.modelo)
-                //setTipoMoto(json.modelo)
-                //setDataFab(json.)
-                //setDataModelo(json.)
-                //setCor(json.)
-                //setCombustivel(json.)
-                //setCilindrada(json.)
-                //setChassi(json.)
-                //setPlaca(json.)
-                //setValor(json.)
-                //setMotoVend(json.)
+            .then(res => {
+                if (res.status === 200) {
+                    alert("Moto: " + res.data.chassi + " atualizada com sucesso!")
+                    navigateToMotos()
+                } else {
+                    alert('Erro ao atualizar moto! \nStatus: ' + res.status)
+                }
             })
-            .catch(err => console.log(err))
-
-    }, []);
+            .catch(err => alert('Erro ao atualizar moto! \nStatus: ' + err.response.data.status + '\n' + err.response.data.message))
+    };
 
     const navigateToMotos = () => {
         navigate('/moto');
@@ -91,7 +79,7 @@ export function UpdateMoto() {
                 <div className="flex flex-row">
                     <Sidebar />
                     <div className=" flex flex-col items-center min-w-0 pt-5 w-screen">
-                        <Title title="Atualizar Moto" />
+                        <Title title="Cadastrar Motos" />
                         <form className="flex flex-col mt-7" onSubmit={handleSubmit} method="post">
                             <label className="text-base text-black" for="txtModelo">Modelo</label>
                             <input
@@ -106,12 +94,25 @@ export function UpdateMoto() {
                                 maxlength="20"
                                 required
                             /><br />
+                            <label className="text-base text-black" for="txtMarca">Marca</label>
+                            <input
+                                className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
+                                onChange={event => setMarca(event.target.value)}
+                                value={marca}
+                                type="text"
+                                name="txtMarca"
+                                id="txtMarca"
+                                placeholder="Digite aqui a marca"
+                                size="20"
+                                maxlength="20"
+                                required
+                            /><br />
 
                             <label className="text-base text-black" for="txtTipoMoto">Tipo da Moto</label>
                             <input
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
-                                onChange={event => setTipoMoto(event.target.value)}
-                                value={tipoMoto}
+                                onChange={event => setIdTipoMoto(event.target.value)}
+                                value={idTipoMoto}
                                 type="text"
                                 name="Moto"
                                 id="txtTipoMoto"
@@ -121,37 +122,37 @@ export function UpdateMoto() {
                             /><br />
 
                             <datalist id="tipoMoto">
-                                <option value="Street"></option>
-                                <option value="Adventure"></option>
-                                <option value="Sport"></option>
-                                <option value="Off Road"></option>
-                                <option value="Touring"></option>
-                                <option value=""></option>
+                                <option value="1" label="Street"></option>
+                                <option value="2" label="Adventure"></option>
+                                <option value="3" label="Off Road"></option>
+                                <option value="4" label="Sport"></option>
+                                <option value="5" label="Touring"></option>
+                                <option value="0" label=""></option>
                             </datalist>
 
-                            <label className="text-base text-black" for="dtFabricacao">Data de Fabricação</label>
+                            <label className="text-base text-black" for="anoFabricacao">Ano Fabricação</label>
                             <input
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
-                                onChange={event => setDataFab(event.target.value)}
-                                value={dataFab}
-                                type="date"
-                                name="DataFabricacao"
-                                id="dtFabricacao"
-                                min="1900-01-01"
-                                max="2022-12-31"
+                                onChange={event => setAnoFab(event.target.value)}
+                                value={anoFab}
+                                type="number"
+                                name="anoFabricacao"
+                                id="anoFabricacao"
+                                min={1900}
+                                placeholder="aaaa"
                                 required
                             /><br />
 
-                            <label className="text-base text-black" for="dtModelo">Data do Modelo</label>
+                            <label className="text-base text-black" for="anoModelo">Ano Modelo</label>
                             <input
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
-                                onChange={event => setDataModelo(event.target.value)}
-                                value={dataModelo}
-                                type="date"
-                                name="DataModelo"
-                                id="dtModelo"
-                                min="1900-01-01"
-                                max="2022-12-31"
+                                onChange={event => setAnoModelo(event.target.value)}
+                                value={anoModelo}
+                                type="number"
+                                name="anoModelo"
+                                id="anoModelo"
+                                min={1900}
+                                placeholder="aaaa"
                                 required
                             /><br />
 
@@ -196,14 +197,14 @@ export function UpdateMoto() {
                                 <option value="Flex"></option>
                             </datalist>
 
-                            <label className="text-base text-black" for="txtCC">Cilindrada</label>
+                            <label className="text-base text-black" for="numCC">Cilindrada</label>
                             <input
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setCilindrada(event.target.value)}
                                 value={cilindrada}
                                 type="number"
-                                name="CC"
-                                id="txtCC"
+                                name="numCC"
+                                id="numCC"
                                 min="0"
                                 placeholder="Digite aqui a cilindrada da moto"
                                 required
@@ -235,27 +236,17 @@ export function UpdateMoto() {
                                 pattern="[A-Z]{3}-[0-9]{4}"
                             /><br />
 
-                            <label className="text-base text-black" for="txtValor">Valor</label>
+                            <label className="text-base text-black" for="numValor">Valor</label>
                             <input
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setValor(event.target.value)}
                                 value={valor}
-                                type="text"
-                                id="txtValor"
-                                name="Valor"
+                                type="number"
+                                id="numValor"
+                                name="numValor"
                                 placeholder="Digite aqui o valor"
                                 required
                             /><br />
-
-                            <label className="text-base text-black" for="ChkPromos">Moto Vendida</label>
-                            <input
-                                className="bg-transparent min-h-[20px] w-[90px] border border-gray-300 text-base px-2"
-                                onChange={event => setMotoVend(event.target.value)}
-                                value={motoVend}
-                                type="checkbox"
-                                name="Promos"
-                                id="Chkvendida"
-                            />
                             <div className="flex flex-col items-center">
                                 <div className="flex flex-row">
                                     <button

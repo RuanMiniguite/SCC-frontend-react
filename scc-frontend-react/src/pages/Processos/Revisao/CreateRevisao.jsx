@@ -3,222 +3,45 @@ import { Sidebar } from "../../../components/Sidebar";
 import { Title } from "../../../components/Title";
 
 import { useNavigate } from 'react-router-dom';
-import React, { FormEvent, useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const produtos = [
-    {
-        "id": 1,
-        "nome": "Bateria",
-        "marca": "Moura",
-        "valor": 307.02,
-        "qtd": 1
-    },
-    {
-        "id": 2,
-        "nome": "Bateria",
-        "marca": "Bosch",
-        "valor": 149.0,
-        "qtd": 4
-    },
-    {
-        "id": 3,
-        "nome": "Óleo Lubrificante",
-        "marca": "Yamalube",
-        "valor": 30.0,
-        "qtd": 9
-    },
-    {
-        "id": 4,
-        "nome": "Amortecedor",
-        "marca": "Moroe",
-        "valor": 150.3,
-        "qtd": 1
-    },
-    {
-        "id": 5,
-        "nome": "Amortecedor",
-        "marca": "Cofap",
-        "valor": 185.0,
-        "qtd": 3
-    },
-    {
-        "id": 6,
-        "nome": "Pastilha de Freio",
-        "marca": "Cobreq",
-        "valor": 50.0,
-        "qtd": 7
-    }
-]
+import axios from "axios";
 
-const motos = [
-
-    {
-        "codMoto": 1,
-        "modelo": "Biz 110i",
-        "marca": "Honda",
-        "anoFabricacao": 2011,
-        "anoModelo": 2011,
-        "cor": "Vermelha",
-        "combustivel": "Gasolina",
-        "cc": 109.01,
-        "chassi": "TL0001",
-        "valor": 16000.0,
-        "placa": "ABC1B34",
-        "tipoMoto": {
-            "codTipo": 1,
-            "nome": "Street"
-        },
-        "cliente": {
-            "codCliente": 1,
-            "nome": "Ruan Miniguite",
-            "cpf": "111.111.111-11",
-            "email": "Ruanminiguite@gmail.com",
-            "telefone": "(28)99918-3529",
-            "estado": "Espirito Santo",
-            "cep": "29295-000",
-            "cidade": "Vargem alta",
-            "bairro": "Pombal de Cima",
-            "pessoa": 0
-        }
-    },
-    {
-        "codMoto": 2,
-        "modelo": "XRE 300",
-        "marca": "Honda",
-        "anoFabricacao": 2021,
-        "anoModelo": 2021,
-        "cor": "Preta",
-        "combustivel": "Gasolina",
-        "cc": 291.6,
-        "chassi": "TL0035",
-        "valor": 22000.0,
-        "placa": "DGT1B34",
-        "tipoMoto": {
-            "codTipo": 2,
-            "nome": "Adventure"
-        },
-        "cliente": {
-            "codCliente": 2,
-            "nome": "Pedro Miniguite",
-            "cpf": "222.222.222-22",
-            "email": "Pedrominiguite@gmail.com",
-            "telefone": "(28)99912-1292",
-            "estado": "Espirito Santo",
-            "cep": "29295-000",
-            "cidade": "Vargem alta",
-            "bairro": "São josé de fruteiras",
-            "pessoa": 1
-        }
-    },
-    {
-        "codMoto": 3,
-        "modelo": "Bross 160",
-        "marca": "Honda",
-        "anoFabricacao": 2020,
-        "anoModelo": 2021,
-        "cor": "Branca",
-        "combustivel": "Gasolina",
-        "cc": 159.01,
-        "chassi": "TL0007",
-        "valor": 20000.0,
-        "placa": "ABD1B33",
-        "tipoMoto": {
-            "codTipo": 1,
-            "nome": "Street"
-        },
-        "cliente": null
-    },
-    {
-        "codMoto": 4,
-        "modelo": "Biz 110i",
-        "marca": "Honda",
-        "anoFabricacao": 2014,
-        "anoModelo": 2014,
-        "cor": "Vermelha",
-        "combustivel": "Gasolina",
-        "cc": 109.01,
-        "chassi": "TL0002",
-        "valor": 16000.0,
-        "placa": "ABC1B34",
-        "tipoMoto": {
-            "codTipo": 1,
-            "nome": "Street"
-        },
-        "cliente": {
-            "codCliente": 1,
-            "nome": "Ruan Miniguite",
-            "cpf": "111.111.111-11",
-            "email": "Ruanminiguite@gmail.com",
-            "telefone": "(28)99918-3529",
-            "estado": "Espirito Santo",
-            "cep": "29295-000",
-            "cidade": "Vargem alta",
-            "bairro": "Pombal de Cima",
-            "pessoa": 0
-        }
-    },
-    {
-        "codMoto": 5,
-        "modelo": "XRE 300",
-        "marca": "Honda",
-        "anoFabricacao": 2015,
-        "anoModelo": 2015,
-        "cor": "Preta",
-        "combustivel": "Gasolina",
-        "cc": 291.6,
-        "chassi": "TL0004",
-        "valor": 22000.0,
-        "placa": "DGT1B34",
-        "tipoMoto": {
-            "codTipo": 2,
-            "nome": "Adventure"
-        },
-        "cliente": {
-            "codCliente": 3,
-            "nome": "Alberto Ricado",
-            "cpf": "017.268.037-98",
-            "email": "AlbertoRicado@gmail.com",
-            "telefone": "(27)99865-9856",
-            "estado": "Espirito Santo",
-            "cep": "95689-000",
-            "cidade": "Pedra Azul",
-            "bairro": "Águas Vermelhas",
-            "pessoa": 0
-        }
-    },
-    {
-        "codMoto": 6,
-        "modelo": "Bross 160",
-        "marca": "Honda",
-        "anoFabricacao": 2010,
-        "anoModelo": 2010,
-        "cor": "Branca",
-        "combustivel": "Gasolina",
-        "cc": 159.01,
-        "chassi": "TL0005",
-        "valor": 20000.0,
-        "placa": "ABD1B33",
-        "tipoMoto": {
-            "codTipo": 1,
-            "nome": "Street"
-        },
-        "cliente": {
-            "codCliente": 3,
-            "nome": "Alberto Ricado",
-            "cpf": "017.268.037-98",
-            "email": "AlbertoRicado@gmail.com",
-            "telefone": "(27)99865-9856",
-            "estado": "Espirito Santo",
-            "cep": "95689-000",
-            "cidade": "Pedra Azul",
-            "bairro": "Águas Vermelhas",
-            "pessoa": 0
-        }
-    }
-]
+const API = 'http://localhost:8080'
 
 
 export function CreateRevisao() {
+
+    const [aux, setAux] = useState('')
+
+    const [produtos, setProdutos] = useState([])
+    const [motos, setMotos] = useState([])
+    const [funcionarios, setFuncionarios] = useState([])
+    const [data, setData] = useState('')
+    const [funcionario, setFuncionario] = useState('')
+    const [moto, setMoto] = useState('')
+    const [valorTotal, setValorTotal] = useState('')
+    const [inputList, setinputList] = useState([{ valorUnitario: '', qtd: '', produto: { id: '', nome: '', marca: '', valor: '', } }])
+
+    useEffect(() => {
+        axios.get(`${API}/produtos`)
+            .then(res => {
+                setProdutos(res.data)
+            })
+            .catch(err => alert(err.response.data.message))
+
+        axios.get(`${API}/motos`)
+            .then(res => {
+                setMotos(res.data)
+            })
+            .catch(err => alert(err.response.data.message))
+
+        axios.get(`${API}/funcionarios`)
+            .then(res => {
+                setFuncionarios(res.data)
+            })
+            .catch(err => alert(err.response.data.message))
+    }, []);
 
     const handleinputchange = (e, index) => {
         const { name, value } = e.target;
@@ -234,58 +57,47 @@ export function CreateRevisao() {
     }
 
     const handleaddclick = () => {
-        setinputList([...inputList, { nomeProduto: '', qtdProduto: '' }]);
+        setinputList([...inputList, { id: '', valorUnitario: '', qtd: '', produto: { id: '', nome: '', marca: '', valor: '', } }]);
     }
 
     const navigate = useNavigate();
 
-    const [data, setData] = useState('')
-    const [funcionario, setFuncionario] = useState('')
-    const [moto, setMoto] = useState('')
-    const [valorTotal, setValorTotal] = useState('')
-    const [inputList, setinputList] = useState([{ nomeProduto: '', qtdProduto: '' }]);
-
-
-    // POST NÃO ESTÁ FUNCIONANDO
     let handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            let res = await fetch("http://localhost:8080/revisoes", {
-                method: "POST",
-                mode: "no-cors",
-                body: JSON.stringify({
-                    data: data,
-                    funcionario: {
-                        codFuncionario: funcionario
-                    },
-                    moto: {
-                        codMoto: moto
-                    },
-                    valorTotal: valorTotal,
-                    itens: [
-                        {
-                            valorUnitario: 0,
-                            qtd: 0,
-                            produto: {
-                                id: 3
-                            }
-                        }
-                    ]
-                }),
-            });
-            //let resJson = await res.json();
-            if (res.status === 200) {
-                //setModelo("");
-                console.log("Revisão cadastrada com sucesso!")
-                navigate('/revisao')
-                //setMessage("User created successfully");
-            } else {
-                console.log("Erro ao cadastrar Revisão!")
-                navigate('/revisao')
+
+        produtos.forEach(produto => {
+
+            for (let i = 0; i < inputList.length; i++) {
+                if (produto.id == inputList[i].id) {
+
+                    const list = [...inputList];
+                    list[i]['produto']['id'] = produto.id;
+                    list[i]['produto']['nome'] = produto.nome;
+                    list[i]['produto']['marca'] = produto.marca;
+                    list[i]['produto']['valor'] = produto.valor;
+                    list[i]['valorUnitario'] = (produto.valor * inputList[i].qtd).toFixed(2);
+
+                    setinputList(list);
+                }
             }
-        } catch (err) {
-            console.log(err);
-        }
+        })
+
+        await axios.post(`${API}/revisoes`, {
+            data: data,
+            valor: valorTotal,
+            funcionario: {
+                codFuncionario: funcionario
+            },
+            moto: {
+                codMoto: moto
+            },
+            itens: [...inputList]
+
+        })
+            .then(res => {
+                res.status === 200 ? navigate('/revisao') : alert(res.status)
+            })
+            .catch(err => alert(err.response.data.message))
     };
 
     const navigateToRevisoes = () => {
@@ -301,6 +113,7 @@ export function CreateRevisao() {
                     <div className="flex flex-col items-center min-w-0 w-screen">
                         <Title title="Cadastrar Revisão" />
                         <form className="flex flex-col mt-7" onSubmit={handleSubmit} method="post">
+
                             <label className="text-base text-black" for="dtFabricacao">Data</label>
                             <input
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
@@ -313,71 +126,65 @@ export function CreateRevisao() {
                                 required
                             /><br />
                             <label className="text-base text-black" for="txtTipoMoto">Funcionário</label>
-                            <input
+                            <select
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
-                                onChange={event => setFuncionario(event.target.id)}
-                                type="text"
+                                onChange={event => setFuncionario(event.target.value)}
                                 name="Funcionario"
                                 id="txtFuncionario"
-                                list="funcionarios"
                                 placeholder="Selecione o Funcionário"
                                 required
-                            /><br />
+                            >
+                                <option value="" selected disabled hidden>Selecione o Funcionario</option>
 
-                            <datalist id="funcionarios">
-                                {
-                                    produtos.map((item) => {
-                                        return <option value={item.nome} />;
-                                    })
-                                }
-                            </datalist>
+                                {funcionarios.map((funcionario) => (
+                                    <option value={funcionario.codFuncionario}>{funcionario.nome}</option>
+                                ))}
+                            </select>
+
                             <label className="text-base text-black" for="txtTipoMoto">Moto</label>
-                            <input
+                            <select
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
-                                onChange={event => setMoto(event.target.id)}
-                                type="text"
+                                onChange={event => setMoto(event.target.value)}
                                 name="txtMotos"
                                 id="txtMotos"
                                 list="motos"
                                 placeholder="Selecione a moto"
                                 required
-                            /><br />
+                            >
+                                <option value="" selected disabled hidden>Selecione a Moto</option>
+                                {motos.map((moto) => (
+                                    <option value={moto.codMoto}>{moto.chassi + ' - ' + moto.modelo}</option>
+                                ))}
+                            </select>
 
-                            <datalist id="motos">
-                                {
-                                    motos.map((item) => {
-                                        return <option id={item.codMoto} value={item.chassi + ' - ' + item.modelo} />;
-                                    })
-                                }
-                            </datalist>
                             <label className="text-base text-black">Produtos</label>
                             {
                                 inputList.map((x, i) => {
                                     return (
                                         <div className="row mb-3 border border-gray-400">
                                             <div>
-                                                <label className="m-1" for="nomeProduto">Nome</label>
-                                                <input
+                                                <label className="m-1" for="id">Nome</label>
+
+                                                <select
                                                     className="bg-transparent min-h-[30px] w-[400px] border border-gray-300 text-base px-2 m-1"
-                                                    type="text"
-                                                    name="nomeProduto"
-                                                    list="produtos"
+                                                    onChange={(e) => handleinputchange(e, i)}
+                                                    name="id"
+                                                    id="id"
                                                     placeholder="Selecione o Produto"
-                                                    onChange={e => handleinputchange(e, i)} />
-                                                <datalist id="produtos">
-                                                    {
-                                                        produtos.map((item) => {
-                                                            return <option value={item.nome + ' - ' + item.marca} />;
-                                                        })
-                                                    }
-                                                </datalist>
+                                                    required
+                                                >
+                                                    <option value="" selected disabled hidden>Selecione o Produto</option>
+                                                    {produtos.map((produto) => (
+                                                        <option value={produto.id}>{produto.nome + ' - ' + produto.marca}</option>
+                                                    ))}
+                                                </select>
                                             </div>
                                             <div>
-                                                <label className="m-1" for="qtdProduto">Quantidade</label>
+                                                <label className="m-1" for="qtd">Quantidade</label>
                                                 <input
-                                                    className="bg-transparent min-h-[30px] w-[60px] border border-gray-300 text-base px-2 m-1"
-                                                    type="text"
-                                                    name="qtdProduto"
+                                                    className="bg-transparent min-h-[30px] w-[60px] border border-gray-300 text-sm px-2 m-1"
+                                                    type="number"
+                                                    name="qtd"
                                                     placeholder="Qtd"
                                                     onChange={e => handleinputchange(e, i)} />
                                             </div>

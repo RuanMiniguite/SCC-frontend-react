@@ -1,10 +1,16 @@
 import { Route, Routes, useParams } from "react-router-dom";
 import React from 'react';
 import { Home } from './pages/Home'
+import { Login } from './pages/Login'
+
 import { Cliente } from './pages/CRUD/Cliente/Cliente'
-import { Comissao } from './pages/CRUD/Comissao/Comissao'
+import { CreateCliente } from './pages/CRUD/Cliente/CreateCliente'
+import { DeleteCliente } from './pages/CRUD/Cliente/DeleteCliente'
+import { UpdateCliente } from './pages/CRUD/Cliente/UpdateCliente'
+
 import { Funcionario } from './pages/CRUD/Funcionario/Funcionario'
 import { CreateFuncionario } from "./pages/CRUD/Funcionario/CreateFuncionario";
+<<<<<<< HEAD
 import { Login } from './pages/Login'
 import { Recall } from './pages/Processos/Recall'
 import { ComissaoFuncionario } from './pages/Processos/ComissaoFuncionario'
@@ -18,18 +24,38 @@ import { Revisao } from './pages/Processos/Revisao/Revisao'
 import { CreateRevisao } from "./pages/Processos/Revisao/CreateRevisao";
 import { UpdateRevisao } from "./pages/Processos/Revisao/UpdateRevisao";
 import { DeleteRevisao } from "./pages/Processos/Revisao/DeleteRevisao";
+=======
+import { UpdateFuncionario } from "./pages/CRUD/Funcionario/UpdateFuncionario";
+import { DeleteFuncionario } from "./pages/CRUD/Funcionario/DeleteFuncionario";
+>>>>>>> 3e1ecdd9eeb55ed77c3fa463227235908fcdefeb
 
 import { R_Comissao } from './pages/Relatorios/R_Comissao'
 import { R_MotosVendidas } from './pages/Relatorios/R_MotosVendidas'
 import { R_Produtos } from './pages/Relatorios/R_Produtos'
 import { R_Revisao } from './pages/Relatorios/R_Revisao'
 
+<<<<<<< HEAD
 import { UpdateFuncionario } from "./pages/CRUD/Funcionario/UpdateFuncionario";
 import { DeleteFuncionario } from "./pages/CRUD/Funcionario/DeleteFuncionario";
+=======
+import { Revisao } from './pages/Processos/Revisao/Revisao'
+import { CreateRevisao } from "./pages/Processos/Revisao/CreateRevisao";
+import { UpdateRevisao } from "./pages/Processos/Revisao/UpdateRevisao"
+
+import { Moto } from './pages/CRUD/Moto/Moto'
+import { CreateMoto } from "./pages/CRUD/Moto/CreateMoto";
+import { UpdateMoto } from "./pages/CRUD/Moto/UpdateMoto";
+import { DeleteMoto } from "./pages/CRUD/Moto/DeleteMoto";
+
+>>>>>>> 3e1ecdd9eeb55ed77c3fa463227235908fcdefeb
 import { Venda } from './pages/Processos/Venda/Venda';
 import { CreateVenda } from "./pages/Processos/Venda/CreateVenda";
 import { UpdateVenda } from './pages/Processos/Venda/UpdateVenda';
 import { DeleteVenda } from './pages/Processos/Venda/DeleteVenda';
+
+import { Recall } from './pages/Processos/Recall'
+import { Comissao } from './pages/CRUD/Comissao/Comissao'
+import { ComissaoFuncionario } from './pages/Processos/ComissaoFuncionario'
 
 function ProfilePage() {
     // Get the userId param from the URL.
@@ -44,7 +70,12 @@ export function Router() {
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+
             <Route path="/cliente" element={<Cliente />} />
+            <Route path="/cliente/createCliente" element={<CreateCliente />} />
+            <Route path="/cliente/deleteCliente/:codCliente" element={<DeleteCliente />} /> 
+            <Route path="/cliente/updateCliente/:codCliente" element={<UpdateCliente />} />             
+
             <Route path="/comissao" element={<Comissao />} />
 
             <Route path="/funcionario" element={<Funcionario />} />

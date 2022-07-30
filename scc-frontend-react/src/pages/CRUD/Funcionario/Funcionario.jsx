@@ -1,68 +1,22 @@
 import { Sidebar } from "../../../components/Sidebar";
 import { Header } from "../../../components/Header";
 import { Title } from "../../../components/Title";
-
 import { Link, useNavigate } from 'react-router-dom';
+import { useEffect } from "react";
+import axios from "axios";
 
-const funcionario = [
-  {
-      "codFuncionario": 1,
-      "nome": "Alberto Ricado",
-      "cpf": "017.268.037-98",
-      "telefone": "(27)99865-9856",
-      "dataNascimento": "2000-04-01",
-      "estado": "Espirito Santo",
-      "cep": "95689-000",
-      "cidade": "Pedra Azul",
-      "bairro": "Águas Vermelhas",
-      "login": "AlbertoR",
-      "senha": "123456",
-      "cargo": "Vendedor",
-      "salario": 2500.66,
-      "admin": 1,
-      "dataAdmissao": "2015-01-01"
-  },
-  {
-      "codFuncionario": 2,
-      "nome": "Marcos Bravim",
-      "cpf": "968.569.787-45",
-      "telefone": "(27)99999-9786",
-      "dataNascimento": "1998-10-12",
-      "estado": "Espirito Santo",
-      "cep": "29500-000",
-      "cidade": "Cachoeiro de Itapemirim",
-      "bairro": "Agostinho Simonato",
-      "login": "MarcosB",
-      "senha": "789123",
-      "cargo": "Vendedor",
-      "salario": 1856.44,
-      "admin": 0,
-      "dataAdmissao": "2018-01-01"
-  },
-  {
-      "codFuncionario": 3,
-      "nome": "Mariana Ribeiro",
-      "cpf": "896.146.195-78",
-      "telefone": "(28)97896-9789",
-      "dataNascimento": "1989-07-07",
-      "estado": "Espirito Santo",
-      "cep": "29300-000",
-      "cidade": " Cachoeiro de Itapemirim",
-      "bairro": "Santo Antonio",
-      "login": "MarianaR",
-      "senha": "456321",
-      "cargo": "Gerente",
-      "salario": 4500.5,
-      "admin": 0,
-      "dataAdmissao": "2020-01-01"
-  }
-]
-
+const API = 'http://localhost:8080/funcionarios/';
+let funcionario = [];
 
 export function Funcionario() {
   
+  useEffect (() => {
+    axios.get(API).then(response => {
+      funcionario = (response.data);
+    })
+  }, []);
+  
   const navigate = useNavigate();
-
   const navigateToCreateFuncionario = () => {
     navigate('/funcionario/createFuncionario');
   };
@@ -158,6 +112,9 @@ export function Funcionario() {
                       <th scope="col" className="relative px-6 py-3">
                         <span className="sr-only">Edit</span>
                       </th>
+                      <th scope="col" className="relative px-6 py-3">
+                        <span className="sr-only">Delete</span>
+                      </th>
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
@@ -175,7 +132,7 @@ export function Funcionario() {
                         <td className="px-3 py-4 whitespace-nowrap text-sm text-center text-gray-500">
                           {funcionario.dataNascimento}
                         </td>
-                        <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-3 py-4 whitespace-nowrap text-sm text-center text-gray-500">
                           {funcionario.estado}
                         </td>
                         <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">

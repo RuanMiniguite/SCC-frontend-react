@@ -32,7 +32,11 @@ import { CreateVenda } from "./pages/Processos/Venda/CreateVenda";
 import { UpdateVenda } from './pages/Processos/Venda/UpdateVenda';
 import { DeleteVenda } from './pages/Processos/Venda/DeleteVenda';
 
-import { Recall } from './pages/Processos/Recall'
+import { Recall } from './pages/Processos/Recall/Recall'
+import { CreateRecall } from './pages/Processos/Recall/CreateRecall'
+import { DeleteRecall } from './pages/Processos/Recall/DeleteRecall'
+import { UpdateRecall } from './pages/Processos/Recall/UpdateRecall'
+
 import { Comissao } from './pages/CRUD/Comissao/Comissao'
 import { ComissaoFuncionario } from './pages/Processos/ComissaoFuncionario'
 
@@ -73,6 +77,10 @@ export function Router() {
             <Route path="/venda/deleteVenda/:codVenda" element={<DeleteVenda />} />
 
             <Route path="/recall" element={<Recall />} />
+            <Route path="/recall/createRecall" element={<CreateRecall />} />
+            <Route path="/recall/deleteRecall/:codRecall" element={<DeleteRecall />} />
+            <Route path="/recall/updateRecall/:codRecall" element={<UpdateRecall />} />
+
             <Route path="/comissaoFuncionario" element={<ComissaoFuncionario />} />
 
             <Route path="/revisao" element={<Revisao />} />

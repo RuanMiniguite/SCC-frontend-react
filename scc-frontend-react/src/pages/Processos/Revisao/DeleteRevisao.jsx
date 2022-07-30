@@ -9,35 +9,35 @@ import axios from "axios";
 
 const API = 'http://localhost:8080'
 
-export function DeleteMoto() {
+export function DeleteRevisao() {
 
-    const [moto, setMoto] = useState('')
+    const [revisao, setRevisao] = useState('')
 
     const navigate = useNavigate();
-    const navigateToMotos = () => {
-        navigate('/moto');
+    const navigateToRevisoes = () => {
+        navigate('/revisao');
     };
     let params = useParams();
 
     useEffect(() => {
-        axios.get(`${API}/motos/${params.codMoto}`)
+        axios.get(`${API}/revisoes/${params.codRevisao}`)
             .then(res => {
-                setMoto(res.data)
+                setRevisao(res.data)
             })
             .catch(err => alert(err.response.data.message))
     }, []);
 
-    function deleteMoto() {
-        axios.delete(`${API}/motos/${params.codMoto}`)
+    function DeleteRevisao() {
+        axios.delete(`${API}/revisoes/${params.codRevisao}`)
             .then(res => {
                 if (res.status === 204) {
-                    alert("Moto deletada com sucesso!")
-                    navigateToMotos()
+                    alert("Revisão deletada com sucesso!")
+                    navigateToRevisoes()
                 } else {
-                    alert('Erro ao deletar moto! \nStatus: ' + res.status)
+                    alert('Erro ao deletar Revisão! \nStatus: ' + res.status)
                 }
             })
-            .catch(err => alert('Erro ao deletar moto! \nStatus: ' + err.response.data.status + '\n' + err.response.data.message))
+            .catch(err => alert('Erro ao deletar Revisão! \nStatus: ' + err.response.data.status + '\n' + err.response.data.message))
 
     }
     return (
@@ -47,15 +47,15 @@ export function DeleteMoto() {
                 <div className="flex flex-row">
                     <Sidebar />
                     <div className="flex flex-col items-center w-screen pt-10 min-w-0">
-                        <Title title="Deletar Moto" />
+                        <Title title="Deletar Revisão" />
 
                         <div className="flex flex-col items-center w-full mt-8">
-                            <h5>Deseja deletar a moto selecionada: {moto.chassi} - {moto.modelo}?</h5>
+                            <h5>Deseja deletar a revisão selecionada codRevisao: {revisao.codRevisao}?</h5>
                         </div>
                         <div className="flex flex-col items-center">
                             <div className="flex flex-row justify-center">
-                                <button className="p-1 mt-5 bg-gray-700 hover:bg-red-600 rounded-md text-white w-[100px] mb-12 mr-4" onClick={deleteMoto} type="button">Confirmar</button>
-                                <button className="p-1 mt-5 border-2 border-gray-700 hover:bg-red-600 hover:border-red-600 hover:text-white rounded-md text-black w-[100px] mb-12 ml-4" onClick={navigateToMotos} type="reset">Cancelar</button>
+                                <button className="p-1 mt-5 bg-gray-700 hover:bg-red-600 rounded-md text-white w-[100px] mb-12 mr-4" onClick={DeleteRevisao} type="button">Confirmar</button>
+                                <button className="p-1 mt-5 border-2 border-gray-700 hover:bg-red-600 hover:border-red-600 hover:text-white rounded-md text-black w-[100px] mb-12 ml-4" onClick={navigateToRevisoes} type="reset">Cancelar</button>
                             </div>
                         </div>
                     </div>

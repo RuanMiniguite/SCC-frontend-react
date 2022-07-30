@@ -78,25 +78,22 @@ export function CreateMoto() {
                             /><br />
 
                             <label className="text-base text-black" for="txtTipoMoto">Tipo da Moto</label>
-                            <input
+                            <select
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setIdTipoMoto(event.target.value)}
-                                type="text"
                                 name="Moto"
                                 id="txtTipoMoto"
                                 list="tipoMoto"
                                 placeholder="Informe o tipo da moto"
                                 required
-                            /><br />
-
-                            <datalist id="tipoMoto">
-                                <option value="1" label="Street"></option>
-                                <option value="2" label="Adventure"></option>
-                                <option value="3" label="Off Road"></option>
-                                <option value="4" label="Sport"></option>
-                                <option value="5" label="Touring"></option>
-                                <option value="0" label=""></option>
-                            </datalist>
+                            >
+                                <option value="" selected disabled hidden>Selecione o Tipo da Moto</option>
+                                <option value="1">Street</option>
+                                <option value="2">Adventure</option>
+                                <option value="3">Off Road</option>
+                                <option value="4">Sport</option>
+                                <option value="5">Touring</option>
+                            </select><br />
 
                             <label className="text-base text-black" for="anoFabricacao">Ano Fabricação</label>
                             <input
@@ -123,43 +120,37 @@ export function CreateMoto() {
                             /><br />
 
                             <label className="text-base text-black" for="txtCor">Cor</label>
-                            <input
+                            <select
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setCor(event.target.value)}
-                                type="text"
                                 name="Cor"
                                 id="txtCor"
-                                list="cor"
                                 placeholder="Informe a cor da moto"
                                 required
-                            /><br />
-
-                            <datalist id="cor">
-                                <option value="Branco"></option>
-                                <option value="Vermelha"></option>
-                                <option value="Preto"></option>
-                                <option value="Cinza"></option>
-                                <option value="Azul"></option>
-                                <option value="Vender"></option>
-                                <option value="Amarela"></option>
-                            </datalist>
+                            >
+                                <option value="" selected disabled hidden>Selecione a cor</option>
+                                <option value="Branco">Branco</option>
+                                <option value="Vermelha">Vermelha</option>
+                                <option value="Preto">Preto</option>
+                                <option value="Cinza">Cinza</option>
+                                <option value="Azul">Azul</option>
+                                <option value="Vender">Vender</option>
+                                <option value="Amarela">Amarela</option>
+                            </select><br />
 
                             <label className="text-base text-black" for="txtCombustivel">Combustivel</label>
-                            <input
+                            <select
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setCombustivel(event.target.value)}
-                                type="text"
                                 name="Combustivel"
                                 id="txtCombustivel"
-                                list="combustivel"
                                 placeholder="Informe o combustivel da moto"
                                 required
-                            /><br />
-
-                            <datalist id="combustivel">
-                                <option value="Gasolina"></option>
-                                <option value="Flex"></option>
-                            </datalist>
+                            >
+                                <option value="" selected disabled hidden>Selecione a cor</option>
+                                <option value="Gasolina">Gasolina</option>
+                                <option value="Flex">Flex</option>
+                            </select><br />
 
                             <label className="text-base text-black" for="numCC">Cilindrada</label>
                             <input
@@ -208,22 +199,14 @@ export function CreateMoto() {
                                 required
                             /><br />
 
-                            <label className="text-base text-black" for="ChkPromos">Moto Vendida</label>
-                            <input
-                                className="bg-transparent min-h-[20px] w-[90px] border border-gray-300 text-base px-2"
-                                onChange={event => setMotoVend(event.target.value)}
-                                type="checkbox"
-                                name="Promos"
-                                id="Chkvendida"
-                            />
                             <div className="flex flex-col items-center">
                                 <div className="flex flex-row">
                                     <button
-                                        className="w-[100px] text-white mb-11 bg-green-700 rounded-md p-1 m-1 mt-5 hover:bg-green-600"
+                                        className="p-1 mt-5 bg-gray-700 hover:bg-red-600 rounded-md text-white w-[100px] mb-12 mr-4"
                                         type="submit">Salvar
                                     </button>
                                     <button
-                                        className="w-[100px] text-white mb-11 bg-red-700 rounded-md p-1 m-1 mt-5 hover:bg-red-500"
+                                        className="p-1 mt-5 border-2 border-gray-700 hover:bg-red-600 hover:border-red-600 hover:text-white rounded-md text-black w-[100px] mb-12 ml-4"
                                         type="button" onClick={navigateToMotos}>Cancelar
                                     </button>
                                 </div>

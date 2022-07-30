@@ -130,7 +130,7 @@ export function UpdateRevisao() {
                 <div className="flex flex-row">
                     <Sidebar />
                     <div className="flex flex-col items-center min-w-0 w-screen">
-                        <Title title="Cadastrar Revisão" />
+                        <Title title="Editar Revisão" />
                         <form className="flex flex-col mt-7" onSubmit={handleSubmit} method="post">
 
                             <label className="text-base text-black" for="dtFabricacao">Data</label>
@@ -169,7 +169,6 @@ export function UpdateRevisao() {
                                 value={moto}
                                 name="txtMotos"
                                 id="txtMotos"
-                                list="motos"
                                 placeholder="Selecione a moto"
                                 required
                             >
@@ -217,11 +216,11 @@ export function UpdateRevisao() {
                                             <div className="mt-4">
                                                 {
                                                     inputList.length - 1 === i &&
-                                                    <button className="bg-green-700 rounded-md text-white w-[70px] m-1" onClick={handleaddclick}>Add</button>
+                                                    <button className="bg-gray-700 hover:bg-red-600 rounded-md text-white w-[70px] m-1" onClick={handleaddclick}>Add</button>
                                                 }
                                                 {
                                                     inputList.length !== 1 &&
-                                                    <button className="bg-red-700 rounded-md text-white w-[70px] m-1" onClick={() => handleremove(i)}>Remove</button>
+                                                    <button className=" border-2 border-gray-700 hover:bg-red-600 hover:border-red-600 hover:text-white rounded-md text-black w-[70px] m-1" onClick={() => handleremove(i)}>Remove</button>
                                                 }
                                             </div>
                                         </div>
@@ -243,11 +242,11 @@ export function UpdateRevisao() {
                             <div className="flex flex-col items-center">
                                 <div className="flex flex-row">
                                     <button
-                                        className="w-[100px] text-white mb-11 bg-green-700 rounded-md p-1 m-1 mt-5 hover:bg-green-600"
+                                        className="p-1 mt-5 bg-gray-700 hover:bg-red-600 rounded-md text-white w-[100px] mb-12 mr-4"
                                         type="submit">Salvar
                                     </button>
                                     <button
-                                        className="w-[100px] text-white mb-11 bg-red-700 rounded-md p-1 m-1 mt-5 hover:bg-red-500"
+                                        className="p-1 mt-5 border-2 border-gray-700 hover:bg-red-600 hover:border-red-600 hover:text-white rounded-md text-black w-[100px] mb-12 ml-4"
                                         type="button" onClick={navigateToRevisoes}>Cancelar
                                     </button>
                                 </div>

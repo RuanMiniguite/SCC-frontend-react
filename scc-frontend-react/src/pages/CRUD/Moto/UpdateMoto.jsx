@@ -81,7 +81,7 @@ export function UpdateMoto() {
                     <div className=" flex flex-col items-center min-w-0 pt-5 w-screen">
                         <Title title="Cadastrar Motos" />
                         <form className="flex flex-col mt-7" onSubmit={handleSubmit} method="post">
-                            <label className="text-base text-black" for="txtModelo">Modelo</label>
+                            <label className="text-base text-black" htmlFor="txtModelo">Modelo</label>
                             <input
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setModelo(event.target.value)}
@@ -94,7 +94,7 @@ export function UpdateMoto() {
                                 maxlength="20"
                                 required
                             /><br />
-                            <label className="text-base text-black" for="txtMarca">Marca</label>
+                            <label className="text-base text-black" htmlFor="txtMarca">Marca</label>
                             <input
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setMarca(event.target.value)}
@@ -108,7 +108,7 @@ export function UpdateMoto() {
                                 required
                             /><br />
 
-                            <label className="text-base text-black" for="txtTipoMoto">Tipo da Moto</label>
+                            <label className="text-base text-black" htmlFor="txtTipoMoto">Tipo da Moto</label>
                             <select
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setIdTipoMoto(event.target.value)}
@@ -127,7 +127,7 @@ export function UpdateMoto() {
                                 <option value="5">Touring</option>
                             </select><br />
 
-                            <label className="text-base text-black" for="anoFabricacao">Ano Fabricação</label>
+                            <label className="text-base text-black" htmlFor="anoFabricacao">Ano Fabricação</label>
                             <input
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setAnoFab(event.target.value)}
@@ -140,7 +140,7 @@ export function UpdateMoto() {
                                 required
                             /><br />
 
-                            <label className="text-base text-black" for="anoModelo">Ano Modelo</label>
+                            <label className="text-base text-black" htmlFor="anoModelo">Ano Modelo</label>
                             <input
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setAnoModelo(event.target.value)}
@@ -153,7 +153,7 @@ export function UpdateMoto() {
                                 required
                             /><br />
 
-                            <label className="text-base text-black" for="txtCor">Cor</label>
+                            <label className="text-base text-black" htmlFor="txtCor">Cor</label>
                             <select
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setCor(event.target.value)}
@@ -173,7 +173,7 @@ export function UpdateMoto() {
                                 <option value="Amarela">Amarela</option>
                             </select><br />
 
-                            <label className="text-base text-black" for="txtCombustivel">Combustivel</label>
+                            <label className="text-base text-black" htmlFor="txtCombustivel">Combustivel</label>
                             <select
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setCombustivel(event.target.value)}
@@ -188,7 +188,7 @@ export function UpdateMoto() {
                                 <option value="Flex">Flex</option>
                             </select><br />
 
-                            <label className="text-base text-black" for="numCC">Cilindrada</label>
+                            <label className="text-base text-black" htmlFor="numCC">Cilindrada</label>
                             <input
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setCilindrada(event.target.value)}
@@ -201,7 +201,7 @@ export function UpdateMoto() {
                                 required
                             /><br />
 
-                            <label className="text-base text-black" for="txtChassi">Chassi</label>
+                            <label className="text-base text-black" htmlFor="txtChassi">Chassi</label>
                             <input
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setChassi(event.target.value)}
@@ -215,7 +215,7 @@ export function UpdateMoto() {
                                 required
                             /><br />
 
-                            <label className="text-base text-black" for="txtPlaca">Placa</label>
+                            <label className="text-base text-black" htmlFor="txtPlaca">Placa</label>
                             <input
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setPlaca(event.target.value)}
@@ -227,7 +227,7 @@ export function UpdateMoto() {
                                 pattern="[A-Z]{3}-[0-9]{4}"
                             /><br />
 
-                            <label className="text-base text-black" for="numValor">Valor</label>
+                            <label className="text-base text-black" htmlFor="numValor">Valor</label>
                             <input
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setValor(event.target.value)}

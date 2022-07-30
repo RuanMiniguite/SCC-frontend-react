@@ -32,11 +32,11 @@ export function Revisao() {
         <div className="flex flex-row">
           <Sidebar />
           <div className="flex flex-col items-center min-w-0 w-screen">
-            <Title title="Página de Revisões" />
+            <Title title="Revisões" />
             <div className="flex flex-row mt-10">
               <button className="p-1 bg-red-600 hover:bg-red-400 rounded-md text-white" onClick={navigateToCreateRevisao}>Cadastrar</button>
             </div>
-            <div className="w-[100%] mt-7">
+            <div className="w-[100%] mt-7 flex flex-row justify-center">
               <div className="shadow overflow-x-scroll border-b border-gray-200 sm:rounded-lg">
                 <table className="divide-gray-200 divide-y-2 m-2 border border-gray-200">
                   <thead className="bg-gray-50">
@@ -90,10 +90,10 @@ export function Revisao() {
                       </th>
 
                       <th scope="col" className="relative px-6 py-3">
-                        <span className="sr-only">Edit</span>
+                        <span className="sr-only">Editar</span>
                       </th>
                       <th scope="col" className="relative px-6 py-3">
-                        <span className="sr-only">Delete</span>
+                        <span className="sr-only">Deletar</span>
                       </th>
                     </tr>
                   </thead>
@@ -139,12 +139,12 @@ export function Revisao() {
 
                         <td className="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">
                           <Link to={`/revisao/updateRevisao/${revisao.codRevisao}`} className="text-indigo-600 hover:text-indigo-900">
-                            Edit
+                            Editar
                           </Link>
                         </td>
                         <td className="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">
                           <Link to={`/revisao/deleteRevisao/${revisao.codRevisao}`} className="text-red-600 hover:text-red-900">
-                            Remove
+                            Deletar
                           </Link>
                         </td>
                       </tr>
@@ -153,6 +153,7 @@ export function Revisao() {
                 </table>
               </div>
             </div>
+            <h6 className="fixed right-1 bottom-1">Autor: Luiz Henrique Cabral</h6>
           </div>
         </div>
       </div>

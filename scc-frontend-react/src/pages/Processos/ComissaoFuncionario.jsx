@@ -1,15 +1,25 @@
-import { Sidebar } from "../../components/Sidebar";
 import { Header } from "../../components/Header";
+import { Sidebar } from "../../components/Sidebar";
+import { Title } from "../../components/Title";
+
 
 export function ComissaoFuncionario() {
   return (
-    <>
-      <Header />
-      <Sidebar />
-      <div className="absolute left-[200px] p-4">
-        <h1>Página Comissao Funcionario</h1>
+    <div className="w-full h-full">
+      <div className="flex flex-col">
+        <Header />
+        <div className="flex flex-row">
+          <Sidebar />
+          <div className="flex flex-col items-center min-w-0 w-screen">
+            <Title title="Comissões dos Funcionários" />
+            <div className="flex flex-row mt-10">
+              <button className="p-1 bg-red-600 hover:bg-red-400 rounded-md text-white" onClick={''}>Cadastrar</button>
+            </div>
+
+          </div>
+        </div>
       </div>
-    </>
+    </div>
 
   );
 }

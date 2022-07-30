@@ -133,7 +133,7 @@ export function UpdateRevisao() {
                         <Title title="Editar Revisão" />
                         <form className="flex flex-col mt-7" onSubmit={handleSubmit} method="post">
 
-                            <label className="text-base text-black" for="dtFabricacao">Data</label>
+                            <label className="text-base text-black" htmlFor="dtFabricacao">Data</label>
                             <input
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setData(event.target.value)}
@@ -145,7 +145,7 @@ export function UpdateRevisao() {
                                 max="2022-12-31"
                                 required
                             /><br />
-                            <label className="text-base text-black" for="txtTipoMoto">Funcionário</label>
+                            <label className="text-base text-black" htmlFor="txtTipoMoto">Funcionário</label>
                             <select
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setFuncionario(event.target.value)}
@@ -162,7 +162,7 @@ export function UpdateRevisao() {
                                 ))}
                             </select>
 
-                            <label className="text-base text-black" for="txtTipoMoto">Moto</label>
+                            <label className="text-base text-black" htmlFor="txtTipoMoto">Moto</label>
                             <select
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setMoto(event.target.value)}
@@ -184,7 +184,7 @@ export function UpdateRevisao() {
                                     return (
                                         <div className="row mb-3 border border-gray-400">
                                             <div>
-                                                <label className="m-1" for="id">Nome</label>
+                                                <label className="m-1" htmlFor="id">Nome</label>
 
                                                 <select
                                                     className="bg-transparent min-h-[30px] w-[400px] border border-gray-300 text-base px-2 m-1"
@@ -202,7 +202,7 @@ export function UpdateRevisao() {
                                                 </select>
                                             </div>
                                             <div>
-                                                <label className="m-1" for="qtd">Quantidade</label>
+                                                <label className="m-1" htmlFor="qtd">Quantidade</label>
                                                 <input
                                                     className="bg-transparent min-h-[30px] w-[60px] border border-gray-300 text-sm px-2 m-1"
                                                     type="number"
@@ -226,7 +226,7 @@ export function UpdateRevisao() {
                                         </div>
                                     );
                                 })}
-                            <label className="text-base text-black" for="numValorTotal">Valor Total</label>
+                            <label className="text-base text-black" htmlFor="numValorTotal">Valor Total</label>
                             <input
                                 className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2"
                                 onChange={event => setValorTotal(event.target.value)}

@@ -1,46 +1,46 @@
 import { Route, Routes, useParams } from "react-router-dom";
 import React from 'react';
-import { Home } from './pages/Home'
-import { Login } from './pages/Login'
+import { Home } from './pages/Home';
+import { Login } from './pages/Login';
 
-import { Cliente } from './pages/CRUD/Cliente/Cliente'
-import { CreateCliente } from './pages/CRUD/Cliente/CreateCliente'
-import { DeleteCliente } from './pages/CRUD/Cliente/DeleteCliente'
-import { UpdateCliente } from './pages/CRUD/Cliente/UpdateCliente'
+import { Cliente } from './pages/CRUD/Cliente/Cliente';
+import { CreateCliente } from './pages/CRUD/Cliente/CreateCliente';
+import { DeleteCliente } from './pages/CRUD/Cliente/DeleteCliente';
+import { UpdateCliente } from './pages/CRUD/Cliente/UpdateCliente';
 
-import { Funcionario } from './pages/CRUD/Funcionario/Funcionario'
+import { Funcionario } from './pages/CRUD/Funcionario/Funcionario';
 import { CreateFuncionario } from "./pages/CRUD/Funcionario/CreateFuncionario";
+import { UpdateFuncionario } from "./pages/CRUD/Funcionario/UpdateFuncionario";
+import { DeleteFuncionario } from "./pages/CRUD/Funcionario/DeleteFuncionario";
 
 import { Moto } from './pages/CRUD/Moto/Moto';
 import { CreateMoto } from "./pages/CRUD/Moto/CreateMoto";
 import { UpdateMoto } from "./pages/CRUD/Moto/UpdateMoto";
 import { DeleteMoto } from "./pages/CRUD/Moto/DeleteMoto";
 
-import { Revisao } from './pages/Processos/Revisao/Revisao'
+import { Revisao } from './pages/Processos/Revisao/Revisao';
 import { CreateRevisao } from "./pages/Processos/Revisao/CreateRevisao";
 import { UpdateRevisao } from "./pages/Processos/Revisao/UpdateRevisao";
 import { DeleteRevisao } from "./pages/Processos/Revisao/DeleteRevisao";
 
-import { R_Comissao } from './pages/Relatorios/R_Comissao'
-import { R_MotosVendidas } from './pages/Relatorios/R_MotosVendidas'
-import { R_Produtos } from './pages/Relatorios/R_Produtos'
-import { R_Revisao } from './pages/Relatorios/R_Revisao'
-
-import { UpdateFuncionario } from "./pages/CRUD/Funcionario/UpdateFuncionario";
-import { DeleteFuncionario } from "./pages/CRUD/Funcionario/DeleteFuncionario";
+import { R_Comissao } from './pages/Relatorios/R_Comissao';
+import { R_MotosVendidas } from './pages/Relatorios/R_MotosVendidas';
+import { R_Produtos } from './pages/Relatorios/R_Produtos';
+import { R_Revisao } from './pages/Relatorios/R_Revisao';
 
 import { Venda } from './pages/Processos/Venda/Venda';
 import { CreateVenda } from "./pages/Processos/Venda/CreateVenda";
 import { UpdateVenda } from './pages/Processos/Venda/UpdateVenda';
 import { DeleteVenda } from './pages/Processos/Venda/DeleteVenda';
 
-import { Recall } from './pages/Processos/Recall/Recall'
-import { CreateRecall } from './pages/Processos/Recall/CreateRecall'
-import { DeleteRecall } from './pages/Processos/Recall/DeleteRecall'
-import { UpdateRecall } from './pages/Processos/Recall/UpdateRecall'
+import { Recall } from './pages/Processos/Recall/Recall';
+import { CreateRecall } from './pages/Processos/Recall/CreateRecall';
+import { DeleteRecall } from './pages/Processos/Recall/DeleteRecall';
+import { UpdateRecall } from './pages/Processos/Recall/UpdateRecall';
 
-import { Comissao } from './pages/CRUD/Comissao/Comissao'
-import { ComissaoFuncionario } from './pages/Processos/ComissaoFuncionario'
+import { Comissao } from './pages/CRUD/Comissao/Comissao';
+
+import { ComissaoFuncionario } from './pages/Processos/ComissaoFuncionario';
 
 function ProfilePage() {
     // Get the userId param from the URL.
@@ -58,8 +58,8 @@ export function Router() {
 
             <Route path="/cliente" element={<Cliente />} />
             <Route path="/cliente/createCliente" element={<CreateCliente />} />
-            <Route path="/cliente/deleteCliente/:codCliente" element={<DeleteCliente />} /> 
-            <Route path="/cliente/updateCliente/:codCliente" element={<UpdateCliente />} />             
+            <Route path="/cliente/deleteCliente/:codCliente" element={<DeleteCliente />} />
+            <Route path="/cliente/updateCliente/:codCliente" element={<UpdateCliente />} />
 
             <Route path="/comissao" element={<Comissao />} />
 

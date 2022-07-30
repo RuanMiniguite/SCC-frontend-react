@@ -143,7 +143,7 @@ export function Revisao() {
                           </Link>
                         </td>
                         <td className="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">
-                          <Link to={`/moto/deleteMoto/${revisao.codRevisao}`} className="text-red-600 hover:text-red-900">
+                          <Link to={`/revisao/deleteRevisao/${revisao.codRevisao}`} className="text-red-600 hover:text-red-900">
                             Remove
                           </Link>
                         </td>

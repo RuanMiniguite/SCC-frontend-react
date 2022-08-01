@@ -13,7 +13,7 @@ export function Recall() {
   const [render, setRender] = useState(false);
 
   useEffect(() => {
-    axios.get(API + 'recall/').then(response => {
+    axios.get(API + 'realizarRecall/').then(response => {
       recalls = (response.data);
       setRender(true);
     })
@@ -52,37 +52,25 @@ export function Recall() {
                           scope="col"
                           className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
                         >
-                          Nome
+                          Data
                         </th>
                         <th
                           scope="col"
                           className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
                         >
-                          Dt. Ini.
+                          Status
                         </th>
                         <th
                           scope="col"
                           className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
                         >
-                          Dt. Fim
+                          Modelo
                         </th>
                         <th
                           scope="col"
                           className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
                         >
-                          Chassi Ini.
-                        </th>
-                        <th
-                          scope="col"
-                          className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
-                        >
-                          Chassi Fim
-                        </th>
-                        <th
-                          scope="col"
-                          className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
-                        >
-                          Funcionário
+                          Recall
                         </th>
                         <th scope="col" className="relative px-6 py-3">
                           <span className="sr-only">Editar</span>
@@ -93,36 +81,30 @@ export function Recall() {
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                      {recalls.map(recalls => (
-                        <tr key={recalls.codRecall}>
+                      {recalls.map(recall => (
+                        <tr key={recall.codRealizarRecall}>
                           <td className="px-3 py-4  w-[50%] whitespace-nowrap text-sm text-gray-500">
-                            {recalls.codRecall}
+                            {recall.codRealizarRecall}
                           </td>
                           <td className="px-3 py-4 whitespace-nowrap text-center text-sm text-gray-500">
-                            {recalls.nome}
+                            {recall.data}
                           </td>
                           <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
-                            {recalls.dataIni}
-                          </td>
-                          <td className="px-3 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                            {recalls.dataFim}
+                            {recall.status === 0 ? 'Não Realizado' : 'Realizado'}
                           </td>
                           <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
-                            {recalls.chassiIni}
-                          </td>
-                          <td className="px-3 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                            {recalls.chassiFim}
+                            {recall.moto.modelo}
                           </td>
                           <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
-                            {recalls.funcionario.nome}
+                            {recall.recall.nome}
                           </td>
                           <td className="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <Link to={`/recall/updateRecall/${recalls.codRecall}`} className="text-indigo-600 hover:text-indigo-900">
+                            <Link to={`/recall/updateRecall/${recall.codRealizarRecall}`} className="text-indigo-600 hover:text-indigo-900">
                               Editar
                             </Link>
                           </td>
                           <td className="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <Link to={`/recall/deleteRecall/${recalls.codRecall}`} className="text-red-600 hover:text-red-700">
+                            <Link to={`/recall/deleteRecall/${recall.codRealizarRecall}`} className="text-red-600 hover:text-red-700">
                               Deletar
                             </Link>
                           </td>

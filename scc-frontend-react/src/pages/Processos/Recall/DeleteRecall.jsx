@@ -18,7 +18,8 @@ export function DeleteRecall() {
   let params = useParams();
 
   useEffect (() => {
-    axios.get(`${API}recall/${params.codRecall}`)
+    console.log(params.codRealizarRecall)
+    axios.get(`${API}realizarRecall/${params.codRealizarRecall}`)
     .then(response => {
       setRecall(response.data);
     })
@@ -28,9 +29,9 @@ export function DeleteRecall() {
   }, []);
 
   function Remove() {
-    axios.delete(`${API}recall/${params.codRecall}`)
+    axios.delete(`${API}realizarRecall/${params.codRealizarRecall}`)
     .then(response => {
-      alert('Recall: ' + recall.codRecall + ' removida com sucesso!');
+      alert('Recall: ' + recall.codRealizarRecall + ' removida com sucesso!');
       navigateToRecall();
     })
     .catch(error => {
@@ -49,7 +50,7 @@ export function DeleteRecall() {
           <div className="flex flex-col items-center min-w-0 w-screen">
             <Title title="Deletar Recall" />
             <div className="flex flex-col items-center w-full mt-8">
-                <h5>Deseja deletar o recall selecionado: {recall.codRecall}-{recall.nome}</h5>
+                <h5>Deseja deletar o recall selecionado: {recall.codRealizarRecall}</h5>
             </div>
             <div className="flex flex-row justify-center mt-10">
               <button className="p-1 mt-5 bg-gray-700 hover:bg-red-600 rounded-md text-white w-[100px] mb-12 mr-4"  onClick={Remove} >Deletar</button>

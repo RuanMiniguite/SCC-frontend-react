@@ -18,6 +18,11 @@ import { CreateMoto } from "./pages/CRUD/Moto/CreateMoto";
 import { UpdateMoto } from "./pages/CRUD/Moto/UpdateMoto";
 import { DeleteMoto } from "./pages/CRUD/Moto/DeleteMoto";
 
+import Comissao from './pages/CRUD/Comissao/Comissao';
+import CreateComissao from './pages/CRUD/Comissao/CreateComissao';
+import UpdateComissao from './pages/CRUD/Comissao/UpdateComissao';
+import DeleteComissao from './pages/CRUD/Comissao/DeleteComissao';
+
 import { Revisao } from './pages/Processos/Revisao/Revisao';
 import { CreateRevisao } from "./pages/Processos/Revisao/CreateRevisao";
 import { UpdateRevisao } from "./pages/Processos/Revisao/UpdateRevisao";
@@ -38,9 +43,10 @@ import { CreateRecall } from './pages/Processos/Recall/CreateRecall';
 import { DeleteRecall } from './pages/Processos/Recall/DeleteRecall';
 import { UpdateRecall } from './pages/Processos/Recall/UpdateRecall';
 
-import { Comissao } from './pages/CRUD/Comissao/Comissao';
-
-import { ComissaoFuncionario } from './pages/Processos/ComissaoFuncionario';
+import ComissaoFuncionario from './pages/Processos/ComissaoFuncionario/ComissaoFuncionario';
+import CreateComissaoFuncionario from './pages/Processos/ComissaoFuncionario/CreateComissaoFuncionario';
+import UpdateComissaoFuncionario from './pages/Processos/ComissaoFuncionario/UpdateComissaoFuncionario';
+import DeleteComissaoFuncionario from './pages/Processos/ComissaoFuncionario/DeleteComissaoFuncionario';
 
 function ProfilePage() {
     // Get the userId param from the URL.
@@ -62,6 +68,9 @@ export function Router() {
             <Route path="/cliente/updateCliente/:codCliente" element={<UpdateCliente />} />
 
             <Route path="/comissao" element={<Comissao />} />
+            <Route path="/comissao/createComissao" element={<CreateComissao />} />
+            <Route path="/comissao/updateComissao/:codComissao" element={<UpdateComissao />} />
+            <Route path="/comissao/deleteComissao/:codComissao" element={<DeleteComissao />} />
 
             <Route path="/funcionario" element={<Funcionario />} />
             <Route path="/funcionario/createFuncionario" element={<CreateFuncionario />} />
@@ -84,6 +93,9 @@ export function Router() {
             <Route path="/recall/updateRecall/:codRecall" element={<UpdateRecall />} />
 
             <Route path="/comissaoFuncionario" element={<ComissaoFuncionario />} />
+            <Route path="/comissaoFuncionario/createComissaoFuncionario" element={<CreateComissaoFuncionario />} />
+            <Route path="/comissaoFuncionario/updateComissaoFuncionario/:codComissaoFuncionario" element={<UpdateComissaoFuncionario />} />
+            <Route path="/comissaoFuncionario/deleteComissaoFuncionario/:codComissaoFuncionario" element={<DeleteComissaoFuncionario />} />
 
             <Route path="/revisao" element={<Revisao />} />
             <Route path="/revisao/createRevisao" element={<CreateRevisao />} />

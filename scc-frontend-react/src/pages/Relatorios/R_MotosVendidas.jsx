@@ -8,26 +8,27 @@ const API = 'http://localhost:8080/vendas/findByVendaFuncionarioAndPeriodo/';
 let Rvenda = [];
 
 export function R_MotosVendidas() {
-  
+
   const [inicio, setInicio] = useState('');
   const [fim, setFim] = useState('');
+  const [render, setRender] = useState(false);
 
   let handleSubmit = async (e) => {
     for (let i = Rvenda.length; i > 0; i--) {
       Rvenda.pop();
     }
     e.preventDefault();
-    axios.get(API + inicio + '/' + fim)  
-    .then(function (response) {
-      Rvenda = response.data;
-    })
-    .catch(function (error) {
-      alert('Erro ao buscar dados');
-      console.log(error);
-    });
+    axios.get(API + inicio + '/' + fim)
+      .then(function (response) {
+        Rvenda = response.data;
+        setRender(true);
+      })
+      .catch(function (error) {
+        alert('Erro ao buscar dados');
+        console.log(error);
+      });
   }
 
-  
   return (
     <div className="w-full h-full">
       <div className="flex flex-col">
@@ -49,52 +50,54 @@ export function R_MotosVendidas() {
 
                 <button className="p-1 bg-gray-700 hover:bg-red-600 rounded-md text-white w-[100px] mb-12 lg:ml-10 mt-1 lg:mt-10" type="submit">Consultar</button>
               </form>
-              
             </div>
 
-            <div className="w-[100%] mt-3 flex flex-row justify-center">
-              <div className="shadow overflow-x-hidden border-b border-gray-200 sm:rounded-lg">
-                <table className="divide-gray-200 divide-y-2 m-2 border border-gray-200">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th
-                        scope="col"
-                        className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
-                      >
-                        Nome funcionario
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
-                      >
-                        Quantidade de Moto Vendidas
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
-                      >
-                        Valor total
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                        {Rvenda.map((r) => (
-                          <tr>
-                            <td className="px-3 py-3 w-[50%] border-b whitespace-nowrap text-sm text-gray-500" id="2">
-                              {r[2]}
-                            </td>
-                            <td className="px-3 py-3 border-b whitespace-nowrap text-sm text-center text-gray-500" id="1">
-                              {r[1]}
-                            </td> 
-                            <td className="px-3 border-b whitespace-nowrap text-sm text-center text-gray-500" id="0">
-                              {r[0].toFixed(2)}
-                            </td>
-                          </tr>
-                        ))}
-                  </tbody>
-                </table>
+            <h6 className="mt-8">Motos vendidas por funcionário em um determinado período.</h6>
+            {render && (
+              <div className="w-[100%] mt-3 flex flex-row justify-center">
+                <div className="shadow overflow-x-hidden border-b border-gray-200 sm:rounded-lg">
+                  <table className="divide-gray-200 divide-y-2 m-2 border border-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th
+                          scope="col"
+                          className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                          Nome funcionario
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                          Quantidade de Moto Vendidas
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-3 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                          Valor total
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {Rvenda.map((r) => (
+                        <tr>
+                          <td className="px-3 py-3 w-[50%] border-b whitespace-nowrap text-sm text-gray-500" id="2">
+                            {r[2]}
+                          </td>
+                          <td className="px-3 py-3 border-b whitespace-nowrap text-sm text-center text-gray-500" id="1">
+                            {r[1]}
+                          </td>
+                          <td className="px-3 border-b whitespace-nowrap text-sm text-center text-gray-500" id="0">
+                            {r[0].toFixed(2)}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
+            )}
             <h6 className="fixed right-1 bottom-1">Autor: Ruan Miniguite</h6>
           </div>
         </div>

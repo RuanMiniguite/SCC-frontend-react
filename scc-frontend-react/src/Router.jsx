@@ -89,8 +89,8 @@ export function Router() {
 
             <Route path="/recall" element={<Recall />} />
             <Route path="/recall/createRecall" element={<CreateRecall />} />
-            <Route path="/recall/deleteRecall/:codRecall" element={<DeleteRecall />} />
-            <Route path="/recall/updateRecall/:codRecall" element={<UpdateRecall />} />
+            <Route path="/recall/deleteRecall/:codRealizarRecall" element={<DeleteRecall />} />
+            <Route path="/recall/updateRecall/:codRealizarRecall" element={<UpdateRecall />} />
 
             <Route path="/comissaoFuncionario" element={<ComissaoFuncionario />} />
             <Route path="/comissaoFuncionario/createComissaoFuncionario" element={<CreateComissaoFuncionario />} />

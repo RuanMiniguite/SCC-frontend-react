@@ -7,46 +7,41 @@ import { useEffect } from "react";
 import axios from 'axios';
 
 const API = 'http://localhost:8080/';
-let funcionarios = []
+let recall = []
 let motos = []
 
 export function CreateRecall() {
 
-  const [nome, setNome] = useState('');
-  const [dataCadastro, setDataCadastro] = useState('');
-  const [dataIni, setDataIni] = useState('');
-  const [dataFim, setDataFim] = useState('');
-  const [anoModelo, setAnoModelo] = useState('');
-  const [chassiIni, setchassiIni] = useState('');
-  const [chassiFim, setchassiFim] = useState('');
-  const [codFuncionario, setCodFuncionario] = useState('');
+  const [data, setData] = useState('');
+  const [status, setstatus] = useState('');
+  const [modelo, setModelo] = useState('');
+  const [nomeRecall, setNomeRecall] = useState('');
 
   useEffect (() => {
     axios.get(API + 'motos/').then(response => {
       motos = (response.data);
     })
 
-    axios.get(API + 'funcionarios/').then(response => {
-      funcionarios = (response.data);
+    axios.get(API + 'recall/').then(response => {
+      recall = (response.data);
     })
   }, []);
 
   let handleSubmit = async (e) =>{
     e.preventDefault();
 
-    await axios.post(API + 'recall/', {
-      nome, 
-      dataCadastro,
-      chassiIni,
-      chassiFim,
-      anoModelo,
-      dataIni,
-      dataFim,
-      funcionario: {
-        codFuncionario: codFuncionario, 
-      } 
+    await axios.post(API + 'realizarRecall/', {
+      data, 
+      status,
+      moto: {
+        codMoto: modelo
+      },
+      recall: {
+        codRecall: nomeRecall
+      }
+
     }).then(response => {
-      alert('Recall: ' + nome + ' cadastrado com sucesso!');
+      alert('Recall da moto' + modelo + ' foi cadastrado com sucesso!');
       navigateToRecall();
     })
     .catch(error => {
@@ -66,44 +61,34 @@ export function CreateRecall() {
         <div className="flex flex-row">
           <Sidebar />
           <div className="flex flex-col items-center min-w-0 w-screen">
-            <Title title="Cadastro de Recall" />
+            <Title title="Cadastro da Realização de Recall" />
 
             <form className="flex flex-col mt-10" onSubmit={handleSubmit} method="post">
             
-              <label for="nome">Nome do Recall</label>
-              <input onChange={event => setNome(event.target.value)} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="text" name="nome" id="nome" min="1900-01-01" max="2022-12-31" required /><br />
+              <label htmlfor="data">Data da Realização</label>
+              <input onChange={event => setData(event.target.value)} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="date" name="data" id="data" min="1900-01-01" max="2022-12-31" required /><br />
 
-              <label for="dataCadastro">Data do Cadastro</label>
-              <input onChange={event => setDataCadastro(event.target.value)} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="date" name="dataCadastro" id="dataCadastro" min="1900-01-01" max="2022-12-31" required /><br />
+               <label className="text-base text-black" htmlfor="txtStatus">Status</label>
+              <select className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" onChange={event => setstatus(event.target.value)} name="txtStatus" id="txtStatus" list="Status" placeholder="Selecione o Status" required>
+                <option value="" selected disabled hidden>Selecione o Status</option>
+                <option value="0">Realizado</option>
+                <option value="1">Não Realizado</option>
+              </select><br /> 
 
-              <label for="dtIni">Data Inicio do Recall</label>
-              <input onChange={event => setDataIni(event.target.value)} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="date" name="DataIni" id="dtIni" min="1900-01-01" max="2022-12-31" required /><br />
-
-              <label for="dtFim">Data do Fim do Recall</label>
-              <input onChange={event => setDataFim(event.target.value)} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="date" name="DataFim" id="dtFim" min="1900-01-01" max="2022-12-31" required /><br />
-
-              <label for="ChassiIni">Chassi em que começa o recall: </label>
-              <input onChange={event => setchassiIni(event.target.value)} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="text" id="chassiIni" name="chassiIni" placeholder="Chassi Inicial" required /><br />
-
-              <label for="ChassiFim">Chassi em que termina o recall: </label>
-              <input onChange={event => setchassiFim(event.target.value)} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="text" id="chassiFim" name="chassiFim" placeholder="Chassi Final" required /><br />
-
-              <label className="text-base text-black" for="txtTipoMoto">Ano/Modelo</label>
-              <select className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" onChange={event => setAnoModelo(event.target.value)} name="txtAnoModelo" id="txtAnoModelo" list="AnoModelo" placeholder="Selecione o Ano/Modelo" required>
-                <option value="" selected disabled hidden>Selecione o Ano/Modelo</option>
-                { motos.map((item) => {
-                  return <option value={item.anoModelo}>{item.modelo}</option>
-                })}
+              <label className="text-base text-black" for="txtTipoMoto">Moto</label>
+              <select className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" onChange={event => setModelo(event.target.value)} name="txtMotos" id="txtMotos" list="motos" placeholder="Selecione a moto" required>
+                <option value="" selected disabled hidden>Selecione a Moto</option>
+                {motos.map((moto) => (
+                    <option value={moto.codMoto}>{moto.chassi + ' - ' + moto.modelo + ' - ' + moto.anoFabricacao + '/' + moto.anoModelo}</option>
+                ))}
               </select><br />
-
-
-
-
-              <label className="text-base text-black" for="txtTipoMoto">Funcionario</label>
-              <select className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" onChange={event => setCodFuncionario(event.target.value)} name="txtFuncionarios" id="txtFuncionarios" list="Funcionarios" placeholder="Selecione o Funcionario" required>
-                <option value="" selected disabled hidden>Selecione o Funcionario</option>
-                { funcionarios.map((item) => {
-                  return <option value={item.codFuncionario}>{item.nome}</option>
+              
+              <label className="text-base text-black" for="txtRecall">Recall</label>
+              <select className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" onChange={event => setNomeRecall(event.target.value)} name="txtRecall" id="txtRecall" list="recall" placeholder="Selecione o Recall" required>
+                <option value="" selected disabled hidden>Selecione o Recall</option>
+                { recall.map((item) => {
+                  {console.log(item.nome)}
+                  return <option value={item.codRecall}>{item.nome}</option>
                 })}
               </select><br />
 

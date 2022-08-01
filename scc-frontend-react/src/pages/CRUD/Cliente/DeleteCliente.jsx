@@ -1,24 +1,34 @@
-import { Sidebar } from "../../../components/Sidebar";
 import { Header } from "../../../components/Header";
+import { Sidebar } from "../../../components/Sidebar";
 import { Title } from "../../../components/Title";
 import { useNavigate, useParams } from 'react-router-dom';
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const API = 'http://localhost:8080/clientes/';
-let cliente = [];
+const API = 'http://localhost:8080/';
   
 export function DeleteCliente() {
+  
+  const [cliente, setCliente] = useState('');
+  const navigate = useNavigate();
+  const navigateToCliente = () => {
+    navigate('/cliente');
+  };
+
   let params = useParams();
   
   useEffect (() => {
-    axios.get(API + params.codCliente).then(response => {
-      cliente = (response.data);
-    })
+    axios.get(`${API}clientes/${params.codCliente}`)
+      .then(response => {
+        setCliente(response.data);
+      })
+      .catch(error => {
+        alert(error.response.data.message);
+      });
   }, []);
 
-  const Remove = () => {
-    axios.delete(API + params.codCliente)
+  function Remove() {
+    axios.delete(`${API}clientes/${params.codCliente}`)
     .then(response => {
       alert('Cliente: ' + cliente.nome + ' Removido com sucesso!');
       navigate('/cliente');
@@ -28,10 +38,7 @@ export function DeleteCliente() {
     });
   }
 
-  const navigate = useNavigate();
-  const navigateToCliente = () => {
-    navigate('/cliente');
-  };
+  
 
   return (
     <div className="w-full h-full">
@@ -41,10 +48,8 @@ export function DeleteCliente() {
           <Sidebar />
           <div className="flex flex-col items-center w-screen min-w-0">
             <Title title="Deletar Cliente" />
-            <div className="text-left text-2xl pt-16 w-[400px] xl:w-[600px] xl:text-3xl">
-              <p className="pt-3 flex justify-between"><span className="w-[40%] text-left uppercase">Nome: </span>{cliente.nome}</p>
-              <p className="pt-3 flex justify-between"><span className="w-[40%] text-left uppercase">CPF: </span>{cliente.cpf}</p>
-              <p className="pt-3 flex justify-between"><span className="w-[40%] text-left uppercase">Telefone: </span>{cliente.telefone}</p>
+            <div className="flex flex-col items-center w-full mt-8">
+                <h5>Deseja deletar cliente selecionado: {cliente.nome}</h5>
             </div>
             <div className="flex flex-row justify-center mt-10">
               <button className="p-1 mt-5 bg-gray-700 hover:bg-red-600 rounded-md text-white w-[100px] mb-12 mr-4"  onClick={Remove} >Deletar</button>

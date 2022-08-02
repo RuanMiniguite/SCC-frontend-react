@@ -24,7 +24,9 @@
   <ol>
     <li><a href="#sobre-o-projeto">Sobre o Projeto</a></li>
     <li><a href="#license">License</a></li>
+    <li><a href="#comandos">Comandos</a></li>
     <li><a href="#autores">Autores</a></li>
+
   </ol>
 </details>
 
@@ -34,13 +36,19 @@
 O sistema de gerenciamento de concessionária, irá detalhar as finalidades de compra, cancelamento de compras, programa de comissão para funcionários, sistema de revisões sistema de recall e realização de orçamentos para uma concessionária de motos. O objetivo deste sistema é a possibilidade de otimização de tempo durante compras, facilitar o gerenciamento de clientes e gerar uma segurança maior para os processos da concessionária, auxiliando no controle das vendas e facilitando a manutenção dos cadastros necessários para o funcionamento adequado do sistema. 
 
 
-### Manutenção de Cadastros
+### Comandos
 
 ```
-> Cadastro Moto
-> Cadastro Funcionario
-> Cadastro Cliente
-> Cadastro Taxa de Comissão
+npm i --save 
+```
+```
+npm i axios --save
+```
+```
+cd .\scc-frontend-react
+```
+```
+npm run dev
 ```
 
 <!-- ============== LICENSE ============== -->

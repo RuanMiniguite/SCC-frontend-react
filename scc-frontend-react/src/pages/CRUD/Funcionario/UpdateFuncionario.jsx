@@ -6,7 +6,7 @@ import { Title } from "../../../components/Title";
 import React from "react";
 import axios from 'axios';
 
-const API = 'http://localhost:8080/funcionarios/';
+const API = 'http://localhost:8080/';
 
 export function UpdateFuncionario() {
   
@@ -32,7 +32,7 @@ export function UpdateFuncionario() {
   };
 
   useEffect(() => {
-    axios.get(API + params.codFuncionario).then(response => {
+    axios.get(API + 'funcionarios/' + params.codFuncionario).then(response => {
       setNome(response.data.nome);
       setCpf(response.data.cpf);
       setTelefone(response.data.telefone);
@@ -64,7 +64,7 @@ export function UpdateFuncionario() {
         aux = 0;
       }
 
-      axios.put(API + params.codFuncionario, {
+      axios.put(API + 'funcionarios/' + params.codFuncionario, {
         codFuncionario: params.codFuncionario, nome, cpf, telefone, dataNascimento, estado, cep, cidade, bairro, login: email, senha, cargo, salario, admin: aux, dataAdmissao
       }).then(response => {
         alert('Funcionario: ' + response.data.nome + ' atualizado com sucesso!');

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import axios from 'axios';
 
-const API = 'http://localhost:8080/funcionarios/';
+const API = 'http://localhost:8080/';
 let dataDeHoje = new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate();
 
 export function CreateFuncionario() {
@@ -34,7 +34,7 @@ export function CreateFuncionario() {
       aux = 0;
     }
 
-    axios.post(API, {
+    axios.post(API + 'funcionarios/', {
       nome, cpf, telefone, dataNascimento, estado, cep, cidade, bairro, login: email, senha, cargo, salario, admin: aux, dataAdmissao: dataDeHoje
     }).then(response => {
       alert('Funcionario: ' + response.data.nome + ' cadastrado com sucesso!');

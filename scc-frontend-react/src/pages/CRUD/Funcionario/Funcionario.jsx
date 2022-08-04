@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const API = 'http://localhost:8080/funcionarios/';
+const API = 'http://localhost:8080/';
 let funcionario = [];
 
 export function Funcionario() {
@@ -13,7 +13,7 @@ export function Funcionario() {
   const [render, setRender] = useState(false);
 
   useEffect(() => {
-    axios.get(API).then(response => {
+    axios.get(API + 'funcionarios/').then(response => {
       funcionario = (response.data);
       setRender(true);
     })

@@ -102,10 +102,10 @@ export function Router() {
             <Route path="/revisao/updateRevisao/:codRevisao" element={<UpdateRevisao />} />
             <Route path="/revisao/deleteRevisao/:codRevisao" element={<DeleteRevisao />} />
 
+            <Route path="/r_Revisao" element={<R_Revisao />} />
+            <Route path="/r_Produtos" element={<R_Produtos />} />
             <Route path="/r_MotosVendidas" element={<R_MotosVendidas />} />
             <Route path="/r_Comissao" element={<R_Comissao />} />
-            <Route path="/r_Produtos" element={<R_Produtos />} />
-            <Route path="/r_Revisao" element={<R_Revisao />} />
         </Routes>
     );
 }

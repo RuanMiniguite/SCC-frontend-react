@@ -25,7 +25,6 @@ export function R_MotosVendidas() {
       })
       .catch(function (error) {
         alert('Erro ao buscar dados');
-        console.log(error);
       });
   }
 

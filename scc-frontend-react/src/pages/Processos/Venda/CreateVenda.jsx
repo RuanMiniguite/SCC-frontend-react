@@ -94,7 +94,6 @@ export function CreateVenda() {
             <Title title="Cadastro de Venda" />
 
             <form className="flex flex-col mt-10" onSubmit={handleSubmit} method="post">
-            
               <label for="dtData">Data</label>
               <input onChange={event => setDataVenda(event.target.value)} className="bg-transparent min-h-[35px] w-[500px] border border-gray-300 text-base px-2" type="date" name="Data" id="dtData" min="1900-01-01" max="2022-12-31" required /><br />
 
